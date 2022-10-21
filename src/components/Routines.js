@@ -17,7 +17,6 @@ const Routines = ({ routines, token, fetchRoutines})  => {
        {
         RoutinesToDisplay.map((routine) => {
             const {activities, creatorId, creatorName, goal, id, isPublic, name} = routine;
-            console.log(routine)
             return (
                 <div className='routine' key={id}>
                     <h3>{name}</h3>
