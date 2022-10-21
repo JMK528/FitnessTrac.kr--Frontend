@@ -22,6 +22,20 @@ const Routines = ({ routines, token, fetchRoutines})  => {
                     <h3>{name}</h3>
                     <p>Goal: {goal}</p>
                     <p>Creator: {creatorName}</p>
+                    <h4>Activities</h4>
+                    {
+                        activities.map((activity) => {
+                            const {name, description, duration, count} = activity;
+                            return (
+                                <>
+                                    <p>{name}</p>
+                                    <p>Description: {description}</p>
+                                    <p>Duration: {duration}</p>
+                                    <p>Count: {count}</p>
+                                </>
+                            )
+                        })
+                    }
                 </div>
             )
         })
