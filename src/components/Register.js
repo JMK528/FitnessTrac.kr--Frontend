@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { registerUser } from '../api';
-import { Button, TextField } from '@mui/material';
+
 const Register = ({ setToken, navigate }) => {
 
   const [username, setUsername] = useState('');
