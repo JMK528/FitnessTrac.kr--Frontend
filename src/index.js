@@ -93,8 +93,15 @@ const App = () => {
                 path='/MyRoutines'
                 element={<MyRoutines
                   user={user}
-                  navigate={navigate} />} 
-              />                 
+                  navigate={navigate} />}
+              />
+              <Route
+                path='/routines'
+                element={<Routines
+                  user={user}
+                  navigate={navigate} />}
+              />
+          
               <Route
                 path='/posts/create-activity'
                 element={<CreateAnActivity

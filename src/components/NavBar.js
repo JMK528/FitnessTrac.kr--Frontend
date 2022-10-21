@@ -23,6 +23,9 @@ const Navbar = ({ logout, token }) => {
             borderColor: '#009DFF',
             backgroundColor: '#009DFF', color: 'black', width: '100%', borderRadius: 15}}>Activities</button></Link>
 
+        <Link style={{ textDecoration: 'none' }} to='/routines'><button style={{
+            borderColor: '#009DFF',
+            backgroundColor: '#009DFF', color: 'black', width: '100%', borderRadius: 15}}>Routines</button></Link>
         {
           token ? (
             <>
