@@ -13,12 +13,15 @@ import {
   Routines
 } from './components';
 
-import { getUserDetails} from './api';
+import { 
+  getUserDetails,
+  getRoutines,
+} from './api';
 
 
 
 const App = () => {
-  const [posts, setPosts] = useState([]);
+  const [routines, setRoutines] = useState([]);
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
 
@@ -38,6 +41,12 @@ const App = () => {
 //     setPosts(results.data.posts);
 //   }
 
+  async function fetchRoutines() {
+    const results = await getRoutines()
+    console.log(results)
+    setRoutines(results)
+  }
+
   async function getMe() {
     const storedToken = window.localStorage.getItem('token');
 
@@ -55,6 +64,10 @@ const App = () => {
       console.log(results.error.message);
     }
   }
+
+  useEffect(() => {
+      fetchRoutines()
+    }, [token])
 
 //   useEffect(() => {
 //     fetchPosts()
@@ -92,7 +105,8 @@ const App = () => {
                 path='/routines'
                 element={<Routines
                   user={user}
-                  navigate={navigate} />}
+                  navigate={navigate} 
+                  routines={routines}/>}
               />
               {/* <Route
                 path='/posts/:postID'
