@@ -9,16 +9,20 @@ import {
   Register,
   Login,
   Activities,
+  CreateAnActivity,
   MyRoutines,
   Routines
 } from './components';
 
-import { getUserDetails} from './api';
+import { 
+  getActivities,
+  getUserDetails
+} from './api';
 
 
 
 const App = () => {
-  const [posts, setPosts] = useState([]);
+  const [activities, setActivities] = useState([]);
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
 
@@ -33,10 +37,11 @@ const App = () => {
     setUser({});
   }
 
-//   async function fetchPosts() {
-//     const results = await getPosts(token)
-//     setPosts(results.data.posts);
-//   }
+  async function fetchActivities() {
+    const results = await getActivities()    
+    setActivities(results);
+    
+  }
 
   async function getMe() {
     const storedToken = window.localStorage.getItem('token');
@@ -52,13 +57,13 @@ const App = () => {
     if (results.success) {
       setUser(results.data);
     } else {
-      console.log(results.error.message);
+      console.log(results.error);
     }
   }
 
-//   useEffect(() => {
-//     fetchPosts()
-//   }, [token])
+  useEffect(() => {
+    fetchActivities()
+  }, [])
 
   useEffect(() => {
     getMe();
@@ -68,50 +73,35 @@ const App = () => {
 
         <header>
           <nav>
-            <Navbar logout={logout} token={token} />
+            <Navbar 
+            logout={logout} token={token} 
+            />
             <Routes>
               <Route
                 path='/'
                 element={<Home />}
               />
-              {/* <Route
+              <Route
                 path='/activities'
                 element={<Activities
-                  Activities={Activities}
-                  fetchActivities={fetchActivities}
+                  activities={activities}                 
                   token={token}
-                  navigate={navigate} />}
-              /> */}
+                  navigate={navigate} 
+                  />}
+              />
                   <Route
                 path='/MyRoutines'
                 element={<MyRoutines
                   user={user}
-                  navigate={navigate} />}
-              />
-              {/* <Route
-                path='/posts/:postID'
-                element={<SinglePostView
-                  posts={posts}
-                  token={token}
-                  navigate={navigate}
-                />}
-              />
-          
+                  navigate={navigate} />} 
+              />                 
               <Route
-                path='/posts/create-post'
-                element={<CreatePost
-                  fetchPosts={fetchPosts}
+                path='/posts/create-activity'
+                element={<CreateAnActivity
+                  fetchActivities={fetchActivities}
                   token={token}
                   navigate={navigate} />}
-              />
-              <Route
-                exact path='/posts/edit-post/:postID'
-                element={<EditPost
-                  fetchPosts={fetchPosts}
-                  navigate={navigate}
-                  posts={posts}
-                  token={token} />}
-              /> */}
+              />        
               <Route
                 path='/login'
                 element={<Login
@@ -142,9 +132,10 @@ root.render(
 /*
 Login
 Registeration
-Posts
-Profile
+Activities
+MyRoutines
 Navbar
-AddPost
+Routines
+CreateRoutine
 
 */

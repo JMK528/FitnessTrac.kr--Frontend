@@ -2,13 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Roboto'
+    font-family:'Roboto';
+    color:'white'
   }
   
   .Navbar {
     display: flex;
-    color: #D4D2D5;
-    background-color: black;
+    color: #ffffff;
+    background-color: rgb(27, 105, 141);
     flex-wrap: wrap; 
     justify-content:space-between;
      
@@ -24,5 +25,6 @@
    }
   #root { 
     background-color:#000000 ;
+    color:#ffffff
   }
   

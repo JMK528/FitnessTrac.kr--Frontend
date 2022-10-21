@@ -21,7 +21,7 @@ const Register = ({ setToken, navigate }) => {
     if (results.success) {
       setToken(results.data.token)
       window.localStorage.setItem('token', results.data.token)
-      navigate('/profile')
+      navigate('/Home')
     } else {
       console.log(results.error.message)
     }
@@ -34,24 +34,24 @@ const Register = ({ setToken, navigate }) => {
         event.preventDefault();
         handleSubmit();
       }}>
-        <TextField style={{ margin: '.25rem', width: '100%', backgroundColor: 'whitesmoke' }}
+        <input style={{ margin: '.25rem', width: '100%', backgroundColor: 'whitesmoke' }}
         type='text'
         label='Enter Username'
-        inputProps={{minLength: 3,maxLength:13}}
+        // inputProps={{minLength: 3,maxLength:13}}
         onChange={(event) => setUsername(event.target.value)}
       />
-        <TextField style={{ margin: '.25rem', width: '100%', backgroundColor: 'whitesmoke' }}
+        <input style={{ margin: '.25rem', width: '100%', backgroundColor: 'whitesmoke' }}
           type='password'
-          inputProps={{minLength: 8, maxLength:20}}
+          // inputProps={{minLength: 8, maxLength:20}}
           required title='8 character minimum'
           label='Enter Password*'
           onChange={(event) => setPassword(event.target.value)} />
-        <TextField style={{ margin: '.25rem', width: '100%', backgroundColor: 'whitesmoke' }}
+        <input style={{ margin: '.25rem', width: '100%', backgroundColor: 'whitesmoke' }}
           type='password'
-          inputProps={{minLength: 8, maxLength:20}}
+          // inputProps={{minLength: 8, maxLength:20}}
           label='Confirm Password*'
           onChange={(event) => setConfirmPassword(event.target.value)} />
-        <Button style={{ height: '3rem', margin: '.25rem', backgroundColor:'#24a6d1' }} variant='contained' type='submit'>Submit</Button>
+        <button style={{ height: '3rem', margin: '.25rem', backgroundColor:'#24a6d1' }} variant='contained' type='submit'>Submit</button>
       </form>
     </>
   )
