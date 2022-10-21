@@ -16,13 +16,15 @@ import {
 
 import { 
   getActivities,
-  getUserDetails
+  getUserDetails,
+  getRoutines,
 } from './api';
 
 
 
 const App = () => {
   const [activities, setActivities] = useState([]);
+  const [routines, setRoutines] = useState([]);
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
 
@@ -41,6 +43,12 @@ const App = () => {
     const results = await getActivities()    
     setActivities(results);
     
+  }
+
+  async function fetchRoutines() {
+    const results = await getRoutines()
+    console.log(results)
+    setRoutines(results)
   }
 
   async function getMe() {
@@ -64,6 +72,14 @@ const App = () => {
   useEffect(() => {
     fetchActivities()
   }, [])
+
+  useEffect(() => {
+    fetchRoutines()
+  }, [token])
+
+//   useEffect(() => {
+//     fetchPosts()
+//   }, [token])
 
   useEffect(() => {
     getMe();
@@ -99,7 +115,8 @@ const App = () => {
                 path='/routines'
                 element={<Routines
                   user={user}
-                  navigate={navigate} />}
+                  navigate={navigate} 
+                  routines={routines}/>}
               />
           
               <Route
