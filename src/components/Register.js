@@ -18,9 +18,10 @@ const Register = ({ setToken, navigate }) => {
     }
     const results = await registerUser(username, password);
 
-    if (results.success) {
-      setToken(results.data.token)
-      window.localStorage.setItem('token', results.data.token)
+    if (results.token) {
+      console.log('token acquired')
+      setToken(results.token)
+      window.localStorage.setItem('token', results.token)
       navigate('/Home')
     } else {
       console.log(results.error.message)

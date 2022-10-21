@@ -9,12 +9,12 @@ const Login = ({ setToken, navigate }) => {
   const handleSubmit = async () => {
     const results = await loginUser(username, password);
     console.log(results);
-    if (results.success) {
-      setToken(results.data.token);
-      window.localStorage.setItem('token', results.data.token);
+    if (results) {
+      setToken(results.token);
+      window.localStorage.setItem('token', results.token);
       navigate('/activities');
     } else {
-      console.log(results.error);
+      console.log('error occured', results);
     }
   };
   return (
