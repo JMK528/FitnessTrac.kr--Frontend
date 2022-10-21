@@ -88,6 +88,12 @@ const App = () => {
                   user={user}
                   navigate={navigate} />}
               />
+              <Route
+                path='/routines'
+                element={<Routines
+                  user={user}
+                  navigate={navigate} />}
+              />
               {/* <Route
                 path='/posts/:postID'
                 element={<SinglePostView

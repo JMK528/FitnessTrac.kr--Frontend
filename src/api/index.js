@@ -61,3 +61,17 @@ export const loginUser = async (username, password) => {
       console.log('error getting users details')
     }
   }
+
+  export const getRoutines = async() => {
+    try {
+      const response = await fetch(`${baseURL}/routines`, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+      const result = await response.json();
+      return result
+    } catch (error) {
+      console.log('error getting all public routines')
+    }
+  }
