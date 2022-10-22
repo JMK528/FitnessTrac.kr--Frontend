@@ -25,6 +25,7 @@ import {
 const App = () => {
   const [activities, setActivities] = useState([]);
   const [routines, setRoutines] = useState([]);
+  const [myRoutines, setMyRoutines] = useState([]);
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
 
@@ -39,6 +40,11 @@ const App = () => {
     setUser({});
   }
 
+  async function fetchMyRoutines() {
+    const results = await getMyRoutines(user.id)
+    setMyRoutines(results)
+  }
+
   async function fetchActivities() {
     const results = await getActivities()    
     setActivities(results);
@@ -47,7 +53,6 @@ const App = () => {
 
   async function fetchRoutines() {
     const results = await getRoutines()
-    console.log(results)
     setRoutines(results)
   }
 
@@ -62,10 +67,10 @@ const App = () => {
     }
 
     const results = await getUserDetails(token);
-    if (results.success) {
-      setUser(results.data);
+    if (results) {
+      setUser(results);
     } else {
-      console.log(results.error);
+      console.log('failed to get user details', results);
     }
   }
 
@@ -106,10 +111,12 @@ const App = () => {
                   />}
               />
                   <Route
-                path='/MyRoutines'
+                path='/myroutines'
                 element={<MyRoutines
                   user={user}
-                  navigate={navigate} />}
+                  navigate={navigate} 
+                  myRoutines={myRoutines}
+                  />}
               />
               <Route
                 path='/routines'
