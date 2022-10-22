@@ -6,3 +6,5 @@ export { default as Activities } from './Activities';
 export { default as CreateAnActivity } from './CreateAnActivity';
 export { default as MyRoutines } from './MyRoutines';
 export { default as Routines } from './Routines';
+export { default as EditAnActivity } from './EditAnActivity';
+export { default as SingleActivityView } from './SingleActivityView'

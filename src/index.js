@@ -10,6 +10,8 @@ import {
   Login,
   Activities,
   CreateAnActivity,
+  EditAnActivity,
+  SingleActivityView,
   MyRoutines,
   Routines
 } from './components';
@@ -19,6 +21,7 @@ import {
   getUserDetails,
   getRoutines,
 } from './api';
+
 
 
 
@@ -77,10 +80,6 @@ const App = () => {
     fetchRoutines()
   }, [token])
 
-//   useEffect(() => {
-//     fetchPosts()
-//   }, [token])
-
   useEffect(() => {
     getMe();
   }, [token])
@@ -96,15 +95,7 @@ const App = () => {
               <Route
                 path='/'
                 element={<Home />}
-              />
-              <Route
-                path='/activities'
-                element={<Activities
-                  activities={activities}                 
-                  token={token}
-                  navigate={navigate} 
-                  />}
-              />
+              />        
                   <Route
                 path='/MyRoutines'
                 element={<MyRoutines
@@ -118,14 +109,38 @@ const App = () => {
                   navigate={navigate} 
                   routines={routines}/>}
               />
+                <Route
+                path='/activities'
+                element={<Activities
+                  activities={activities}                 
+                  token={token}
+                  navigate={navigate} 
+                  />}
+              />
+                 <Route
+                path='/activities/:activityID'
+                element={<SingleActivityView
+                  activities={activities}
+                  token={token}
+                  navigate={navigate}
+                />}
+              />
           
               <Route
-                path='/posts/create-activity'
+                path='/activities/create-activity'
                 element={<CreateAnActivity
                   fetchActivities={fetchActivities}
                   token={token}
                   navigate={navigate} />}
-              />        
+              />  
+              <Route
+                exact path='/activities/edit-activity/:activityID'
+                element={<EditAnActivity
+                  fetchPosts={fetchActivities}
+                  navigate={navigate}
+                  activities={activities}
+                  token={token} />}
+              />      
               <Route
                 path='/login'
                 element={<Login

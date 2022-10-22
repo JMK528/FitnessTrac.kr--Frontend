@@ -27,7 +27,6 @@ const Register = ({ setToken, navigate }) => {
       console.log(results.error.message)
     }
   }
-
   return (
     <>
       <h1>Register</h1>
@@ -38,18 +37,17 @@ const Register = ({ setToken, navigate }) => {
         <input style={{ margin: '.25rem', width: '100%', backgroundColor: 'whitesmoke' }}
         type='text'
         label='Enter Username'
-        // inputProps={{minLength: 3,maxLength:13}}
+        required={{minLength: 3,maxLength:13}}
         onChange={(event) => setUsername(event.target.value)}
       />
         <input style={{ margin: '.25rem', width: '100%', backgroundColor: 'whitesmoke' }}
           type='password'
-          // inputProps={{minLength: 8, maxLength:20}}
-          required title='8 character minimum'
+         required={{minLength: 8, maxLength:20}}        
           label='Enter Password*'
           onChange={(event) => setPassword(event.target.value)} />
         <input style={{ margin: '.25rem', width: '100%', backgroundColor: 'whitesmoke' }}
           type='password'
-          // inputProps={{minLength: 8, maxLength:20}}
+          required={{minLength: 8, maxLength:20}}
           label='Confirm Password*'
           onChange={(event) => setConfirmPassword(event.target.value)} />
         <button style={{ height: '3rem', margin: '.25rem', backgroundColor:'#24a6d1' }} variant='contained' type='submit'>Submit</button>
@@ -57,5 +55,4 @@ const Register = ({ setToken, navigate }) => {
     </>
   )
 }
-
 export default Register;
