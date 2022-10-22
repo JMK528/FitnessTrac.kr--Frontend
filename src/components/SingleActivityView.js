@@ -1,11 +1,7 @@
-import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import {  deleteActivity } from "../api";
+import React from "react";
+import { useParams } from "react-router-dom";
 
-
-
-
-const SingleActivityView = ({ activities, token, navigate, getMe }) => {
+const SingleActivityView = ({ activities }) => {
     
     const { activityID } = useParams();
 

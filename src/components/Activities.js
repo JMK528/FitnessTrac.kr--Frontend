@@ -58,7 +58,7 @@ const Activities = ({ activities,token }) => {
                                                     style={{
                                                         textDecoration: 'none'
                                                     }}
-                                                    to={`/activites/edit-activity/${id}`}
+                                                    to={`/activities/edit-activity/${id}`}
                                                 ><button
                                                     style={{
                                                         height: '3rem',

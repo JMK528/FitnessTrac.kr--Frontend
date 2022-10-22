@@ -49,8 +49,7 @@ const App = () => {
   }
 
   async function fetchRoutines() {
-    const results = await getRoutines()
-    console.log(results)
+    const results = await getRoutines()    
     setRoutines(results)
   }
 
@@ -136,10 +135,10 @@ const App = () => {
               <Route
                 exact path='/activities/edit-activity/:activityID'
                 element={<EditAnActivity
-                  fetchPosts={fetchActivities}
+                  fetchActivities={fetchActivities}
                   navigate={navigate}
                   activities={activities}
-                  token={token} />}
+                   />}
               />      
               <Route
                 path='/login'

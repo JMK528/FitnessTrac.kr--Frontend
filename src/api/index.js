@@ -74,17 +74,17 @@ export const getUserDetails = async (token) => {
 
 export const createActivity = async (token, { name, description }) => {
   try {
-    const response = await fetch(`${baseURL}/posts`, {
+    const response = await fetch(`${baseURL}/activities`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-        activity: {
-          name,
-          description,
-        }
+
+        name,
+        description,
+
       })
     })
     const results = await response.json();
@@ -94,23 +94,19 @@ export const createActivity = async (token, { name, description }) => {
   }
 }
 
-export const updateActivity = async ({ description }) => {
+export const updateActivity = async ({ name, description }) => {
   try {
     const response = await fetch(`${baseURL}/activities/${[id]}`, {
       method: "PATCH",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
       body: JSON.stringify({
-        activity: {
 
-          description,
+        name,
+        description,
 
-        }
       })
     })
     const results = await response.json();
+    console.log(results)
     return (results)
 
   } catch (ex) {

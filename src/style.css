@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family:'Roboto';
-    color:'white'
+    
   }
   
   .Navbar {
@@ -31,4 +31,7 @@
     background-color:white;
     color: black;
   }
-  
+  button {
+    color: #ffffff;
+    background-color: darkblue;
+  }
