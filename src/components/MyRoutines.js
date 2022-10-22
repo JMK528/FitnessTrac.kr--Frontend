@@ -10,6 +10,7 @@ const myRoutines = ({ myRoutines, token, user})  => {
     const filteredRoutines = myRoutines.filter(routine => routineMatches(routine, searchTerm))
     const RoutinesToDisplay = searchTerm.length ? filteredRoutines : myRoutines;
     return(
+        <div className='myRoutinesDiv'>
         <div className='routinesDiv'>
             <form>
                 <label>Search</label>
@@ -41,6 +42,10 @@ const myRoutines = ({ myRoutines, token, user})  => {
             )
         })
        }
+       </div>
+       <div className='createRoutineDiv'>
+       
+       </div>
        </div>
     )
 }
