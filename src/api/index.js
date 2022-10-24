@@ -109,3 +109,40 @@ export const getRoutines = async() => {
       } catch (error) {
         console.log('error getting all public routines')
       } }
+
+export const createRoutine = async(token, {name, goal, isPublic}) => {
+  try {
+    const response = await fetch(`${baseURL}/routines`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        name,
+        goal,
+        isPublic
+      })
+    })
+    const result = await response.json()
+    return result
+  } catch (error) {
+    console.log('error creating routine')
+  }
+}
+
+
+export const getMyRoutines = async(token, username) => {
+  try {
+    const response = await fetch(`${baseURL}/users/${username}/routines`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    })
+    const result = await response.json();
+    return result
+  } catch (error) {
+    console.log(`error getting all routines for ${username}`)
+  }
+}

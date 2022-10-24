@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const myRoutines = ({ myRoutines, token, user})  => {
+const myRoutines = ({ myRoutines, token, createRoutine})  => {
     const [searchTerm, setSearchTerm] = useState('');
     
     const routineMatches = (routine, text) => {
@@ -9,6 +9,7 @@ const myRoutines = ({ myRoutines, token, user})  => {
     }
     const filteredRoutines = myRoutines.filter(routine => routineMatches(routine, searchTerm))
     const RoutinesToDisplay = searchTerm.length ? filteredRoutines : myRoutines;
+
     return(
         <div className='myRoutinesDiv'>
         <div className='routinesDiv'>
@@ -29,12 +30,12 @@ const myRoutines = ({ myRoutines, token, user})  => {
                         activities.map((activity) => {
                             const {name, description, duration, count} = activity;
                             return (
-                                <>
-                                    <p>{name}</p>
+                                <li>
+                                    <h5>{name}</h5>
                                     <p>Description: {description}</p>
                                     <p>Duration: {duration}</p>
                                     <p>Count: {count}</p>
-                                </>
+                                </li>
                             )
                         })
                     }
@@ -44,13 +45,46 @@ const myRoutines = ({ myRoutines, token, user})  => {
        }
        </div>
        <div className='createRoutineDiv'>
-       
+            <CreateRoutine 
+            createRoutine={createRoutine}
+            token={token}
+            />
        </div>
        </div>
     )
 }
 
+const CreateRoutine = ({fetchMyRoutines, token, createRoutine}) => {
+    const [name, setName] = useState('');
+    const [goal, setGoal] = useState('');
+    const [isPublic, setIsPublic] = useState(false);
 
+    const newRoutine = {
+        name,
+        goal,
+        isPublic
+    }
+
+    async function addRoutine() {
+        const result = await createRoutine(token, newRoutine)
+        fetchMyRoutines();
+    }
+    return (
+        <form onSubmit={(event) => {
+            event.preventDefault();
+            addRoutine()}}>
+            <input className='textInput' type='text' placeholder='name' value={name} onChange={(event) => setName(event.target.value)}/>
+            <input className='textInput' type='text' placeholder='goal' value={goal} onChange={(event) => setGoal(event.target.value)}/>
+            <label>isPublic</label>
+            <input
+            type='checkbox'
+            onChange={(event) => setIsPublic(event.target.checked)}
+            />
+            <button type='submit'>Confirm add post</button>
+            
+        </form>
+    )
+}
 
 
 

@@ -18,6 +18,8 @@ import {
   getActivities,
   getUserDetails,
   getRoutines,
+  createRoutine,
+  getMyRoutines
 } from './api';
 
 
@@ -30,8 +32,6 @@ const App = () => {
   const [user, setUser] = useState({});
 
 
-
-
   const navigate = useNavigate();
 
   function logout() {
@@ -41,7 +41,7 @@ const App = () => {
   }
 
   async function fetchMyRoutines() {
-    const results = await getMyRoutines(user.id)
+    const results = await getMyRoutines(token, user.username)
     setMyRoutines(results)
   }
 
@@ -78,17 +78,22 @@ const App = () => {
     fetchActivities()
   }, [])
 
+  
   useEffect(() => {
     fetchRoutines()
   }, [token])
-
-//   useEffect(() => {
-//     fetchPosts()
-//   }, [token])
-
-  useEffect(() => {
-    getMe();
-  }, [token])
+  
+  //   useEffect(() => {
+    //     fetchPosts()
+    //   }, [token])
+    
+    useEffect(() => {
+      getMe();
+    }, [token])
+    
+    useEffect(() => {
+      fetchMyRoutines()
+    }, [user])
 
   return (
 
@@ -113,9 +118,11 @@ const App = () => {
                   <Route
                 path='/myroutines'
                 element={<MyRoutines
-                  user={user}
                   navigate={navigate} 
                   myRoutines={myRoutines}
+                  createRoutine={createRoutine}
+                  token={token}
+                  getMe={getMe}
                   />}
               />
               <Route
