@@ -124,6 +124,7 @@ const App = () => {
                   createRoutine={createRoutine}
                   token={token}
                   getMe={getMe}
+                  fetchMyRoutines={fetchMyRoutines}
                   />}
               />
               <Route

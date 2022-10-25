@@ -7,8 +7,10 @@ const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines}) => {
     const { _id } = useParams();
 
 
-    const [currentRoutine] = myRoutines.filter(routine => routine._id === id * 1);
-    const {activities, creatorId, creatorName, goal, id, isPublic, name} = routine;
+    const [currentRoutine] = myRoutines.filter(routine => routine.id === _id * 1);
+    const {activities, creatorId, creatorName, goal, id, isPublic, name} = currentRoutine;
+
+    console.log('hello')
 
     const [addActivity, setAddActivity] = useState(false)
 
@@ -26,9 +28,48 @@ const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines}) => {
         const response = await updateRoutine(token, updatedRoutine)
         console.log(response)
     }
-
     return (
-        <h1>edit routine</h1>
+        <div className='editRoutineDiv'>
+        <form onSubmit={(event) => {
+            event.preventDefault();
+            editRoutine();
+            fetchMyRoutines();
+            navigate('/myroutines')
+        }}>
+            <input
+            className='textInput'
+            type='text'
+            placeholder={name}
+            onChange={(event) => setNewName(event.target.value)}
+            />
+            <input
+            className='textInput'
+            type='text'
+            placeholder={goal}
+            onChange={(event) => setNewGoal(event.target.value)}
+            />
+            <label>isPublic</label>
+            <input
+            type='checkbox'
+            onChange={(event) => setNewIsPublic(event.target.checked)}
+            />
+            <button type='submit'>Edit Routine</button>
+        </form>
+        <h4>Activities</h4>
+                    {
+                        activities.map((activity) => {
+                            const {name, description, duration, count, id} = activity;
+                            return (
+                                <li key={id}>
+                                    <h5>{name}</h5>
+                                    <p>Description: {description}</p>
+                                    <p>Duration: {duration}</p>
+                                    <p>Count: {count}</p>
+                                </li>
+                            )
+                        })
+                    }
+        </div>
     )
 }
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 
 
-const myRoutines = ({ myRoutines, token, createRoutine})  => {
+const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines})  => {
     const [searchTerm, setSearchTerm] = useState('');
     
     
@@ -51,6 +51,7 @@ const myRoutines = ({ myRoutines, token, createRoutine})  => {
             <CreateRoutine 
             createRoutine={createRoutine}
             token={token}
+            fetchMyRoutines={fetchMyRoutines}
             />
        </div>
        </div>
@@ -75,7 +76,8 @@ const CreateRoutine = ({fetchMyRoutines, token, createRoutine}) => {
     return (
         <form onSubmit={(event) => {
             event.preventDefault();
-            addRoutine()}}>
+            addRoutine()
+            fetchMyRoutines()}}>
             <input className='textInput' type='text' placeholder='name' value={name} onChange={(event) => setName(event.target.value)}/>
             <input className='textInput' type='text' placeholder='goal' value={goal} onChange={(event) => setGoal(event.target.value)}/>
             <label>isPublic</label>
