@@ -11,7 +11,8 @@ import {
   Activities,
   CreateAnActivity,
   MyRoutines,
-  Routines
+  Routines,
+  EditRoutine
 } from './components';
 
 import { 
@@ -132,7 +133,12 @@ const App = () => {
                   navigate={navigate} 
                   routines={routines}/>}
               />
-          
+              <Route
+                path='/myroutines/editroutine/:id'
+                element={<EditRoutine
+                
+                />}
+              />        
               <Route
                 path='/posts/create-activity'
                 element={<CreateAnActivity

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 
 const myRoutines = ({ myRoutines, token, createRoutine})  => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [addActivity, setAddActivity] = useState(false)
     
     const routineMatches = (routine, text) => {
         if(routine.name.toUpperCase().includes(text.toUpperCase())) return true
@@ -25,12 +27,13 @@ const myRoutines = ({ myRoutines, token, createRoutine})  => {
                     <h3>{name}</h3>
                     <p>Goal: {goal}</p>
                     <p>Creator: {creatorName}</p>
+                    <Link className='routineButtons' to={`/myroutines/editroutine/${id}`}>Edit</Link>
                     <h4>Activities</h4>
                     {
                         activities.map((activity) => {
-                            const {name, description, duration, count} = activity;
+                            const {name, description, duration, count, id} = activity;
                             return (
-                                <li>
+                                <li key={id}>
                                     <h5>{name}</h5>
                                     <p>Description: {description}</p>
                                     <p>Duration: {duration}</p>
@@ -39,6 +42,7 @@ const myRoutines = ({ myRoutines, token, createRoutine})  => {
                             )
                         })
                     }
+                    
                 </div>
             )
         })
