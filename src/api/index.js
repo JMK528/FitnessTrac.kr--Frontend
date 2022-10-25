@@ -150,9 +150,10 @@ export const getMyRoutines = async(token, username) => {
 }
 
 export const updateRoutine = async(token, {name, goal, isPublic, id}) => {
+  console.log('beginning update')
   try {
-    const response = await fetch(`${baseURL}/api/routines/${id}`, {
-      method: "POST",
+    const response = await fetch(`${baseURL}/routines/${id}`, {
+      method: "PATCH",
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`

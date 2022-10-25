@@ -1,16 +1,14 @@
 import React, {useState} from 'react';
 import { useParams } from 'react-router-dom'
-import { updateRoutine } from '../api';
 
 
-const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines}) => {
+
+const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines, updateRoutine, token}) => {
     const { _id } = useParams();
 
 
     const [currentRoutine] = myRoutines.filter(routine => routine.id === _id * 1);
     const {activities, creatorId, creatorName, goal, id, isPublic, name} = currentRoutine;
-
-    console.log('hello')
 
     const [addActivity, setAddActivity] = useState(false)
 
@@ -26,7 +24,6 @@ const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines}) => {
             id,
         }
         const response = await updateRoutine(token, updatedRoutine)
-        console.log(response)
     }
     return (
         <div className='editRoutineDiv'>

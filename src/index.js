@@ -20,7 +20,8 @@ import {
   getUserDetails,
   getRoutines,
   createRoutine,
-  getMyRoutines
+  getMyRoutines,
+  updateRoutine
 } from './api';
 
 
@@ -141,6 +142,8 @@ const App = () => {
                   user={user}
                   navigate={navigate}
                   fetchMyRoutines={fetchMyRoutines}
+                  updateRoutine={updateRoutine}
+                  token={token}
                 />}
               />        
               <Route
