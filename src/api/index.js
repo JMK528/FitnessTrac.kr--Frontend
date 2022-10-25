@@ -1,3 +1,5 @@
+import { json } from "react-router-dom";
+
 const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api'
 
 export const getActivities = async () => {
@@ -144,5 +146,26 @@ export const getMyRoutines = async(token, username) => {
     return result
   } catch (error) {
     console.log(`error getting all routines for ${username}`)
+  }
+}
+
+export const updateRoutine = async(token, {name, goal, isPublic, id}) => {
+  try {
+    const response = await fetch(`${baseURL}/api/routines/${id}`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        name,
+        goal,
+        isPublic
+      })
+    })
+    const result = await response.json();
+    return result
+  } catch (error) {
+    console.log(`error updating routine ${name}`)
   }
 }

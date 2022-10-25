@@ -134,9 +134,12 @@ const App = () => {
                   routines={routines}/>}
               />
               <Route
-                path='/myroutines/editroutine/:id'
+                path='/myroutines/editroutine/:_id'
                 element={<EditRoutine
-                
+                  myRoutines={myRoutines}
+                  user={user}
+                  navigate={navigate}
+                  fetchMyRoutines={fetchMyRoutines}
                 />}
               />        
               <Route

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const myRoutines = ({ myRoutines, token, createRoutine})  => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [addActivity, setAddActivity] = useState(false)
+    
     
     const routineMatches = (routine, text) => {
         if(routine.name.toUpperCase().includes(text.toUpperCase())) return true
@@ -42,7 +42,6 @@ const myRoutines = ({ myRoutines, token, createRoutine})  => {
                             )
                         })
                     }
-                    
                 </div>
             )
         })
