@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family:'Roboto';
-    color:'white'
+    
   }
   
   .Navbar {
@@ -18,13 +18,17 @@
    form {
     display:flex;
     flex-direction: column;
-    margin: 2rem;
-    padding: 2rem;  
+    margin: 6rem;
+    padding: 6rem;  
     justify-content: center;
   
    }
-  #root { 
-    background-color:#000000 ;
+   body{
+    background-color: #000000;
+    padding: 2rem;
+    margin: 2rem;
+  }
+  #root {    
     color:#ffffff
   }
   .routinesDiv {
@@ -46,4 +50,9 @@
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
+  }
+    
+  button {
+    color: #ffffff;
+    background-color: darkblue;
   }

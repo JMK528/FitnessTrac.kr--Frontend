@@ -27,6 +27,7 @@ const CreateAnActivity = ( { token, fetchActivities,navigate }) => {
         addPost();
         
       }}>
+        <h1>Create An Activity</h1>
         <input
           type='text'
           label="Name*"

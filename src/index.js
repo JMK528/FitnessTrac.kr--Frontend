@@ -10,6 +10,8 @@ import {
   Login,
   Activities,
   CreateAnActivity,
+  EditAnActivity,
+ 
   MyRoutines,
   Routines,
   EditRoutine
@@ -23,6 +25,7 @@ import {
   getMyRoutines,
   updateRoutine
 } from './api';
+
 
 
 
@@ -108,15 +111,7 @@ const App = () => {
               <Route
                 path='/'
                 element={<Home />}
-              />
-              <Route
-                path='/activities'
-                element={<Activities
-                  activities={activities}                 
-                  token={token}
-                  navigate={navigate} 
-                  />}
-              />
+              />        
                   <Route
                 path='/myroutines'
                 element={<MyRoutines
@@ -146,13 +141,32 @@ const App = () => {
                   token={token}
                 />}
               />        
+                <Route
+                path='/activities'
+                element={<Activities
+                  activities={activities}                 
+                  token={token}
+                  navigate={navigate} 
+                  />}
+              />
+             
+          
               <Route
-                path='/posts/create-activity'
+                path='/activities/create-activity'
                 element={<CreateAnActivity
                   fetchActivities={fetchActivities}
                   token={token}
                   navigate={navigate} />}
-              />        
+              />  
+              <Route
+                path='/activities/edit-activity/:activityID'
+                element={<EditAnActivity
+                  fetchActivities={fetchActivities}
+                  navigate={navigate}
+                  activities={activities}
+                  token={token}
+                   />}
+              />      
               <Route
                 path='/login'
                 element={<Login
