@@ -94,10 +94,14 @@ export const createActivity = async (token, { name, description }) => {
   }
 }
 
-export const updateActivity = async ({ name, description }) => {
+export const updateActivity = async ({ name, description,id }, token) => {
   try {
-    const response = await fetch(`${baseURL}/activities/${[id]}`, {
+    const response = await fetch(`${baseURL}/activities/${id}`, {
       method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({
 
         name,
@@ -111,23 +115,6 @@ export const updateActivity = async ({ name, description }) => {
 
   } catch (ex) {
     console.log('error updating activity')
-  }
-}
-
-export const deleteActivity = async (token, activityID) => {
-  try {
-    const response = await fetch(`${baseURL}/activities/${activityID}`, {
-      method: "DELETE",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
-    })
-    const results = await response.json();
-    console.log(results)
-    return (results)
-  } catch (ex) {
-    console.log('error deleting activity')
   }
 }
 

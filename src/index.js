@@ -11,7 +11,7 @@ import {
   Activities,
   CreateAnActivity,
   EditAnActivity,
-  SingleActivityView,
+ 
   MyRoutines,
   Routines
 } from './components';
@@ -116,14 +116,7 @@ const App = () => {
                   navigate={navigate} 
                   />}
               />
-                 <Route
-                path='/activities/:activityID'
-                element={<SingleActivityView
-                  activities={activities}
-                  token={token}
-                  navigate={navigate}
-                />}
-              />
+             
           
               <Route
                 path='/activities/create-activity'
@@ -133,11 +126,12 @@ const App = () => {
                   navigate={navigate} />}
               />  
               <Route
-                exact path='/activities/edit-activity/:activityID'
+                path='/activities/edit-activity/:activityID'
                 element={<EditAnActivity
                   fetchActivities={fetchActivities}
                   navigate={navigate}
                   activities={activities}
+                  token={token}
                    />}
               />      
               <Route

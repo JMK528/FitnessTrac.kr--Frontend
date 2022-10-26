@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { updateActivity, deleteActivity } from '../api';
+import { updateActivity } from '../api';
 
-const EditAnActivity = ({ activities, fetchActivities, navigate }) => {
+const EditAnActivity = ({ activities, fetchActivities, navigate, token}) => {
   const { activityID } = useParams();
   if (activities.length) {
     const currentActivity = activities.find(activity => activity.id === activityID * 1);
@@ -20,8 +20,9 @@ const EditAnActivity = ({ activities, fetchActivities, navigate }) => {
         description: newDescription,
         id: activityID
       }
-      await updateActivity(updatedActivity)
-      navigate('/activities/:activityID')
+      console.log("something",token)
+      await updateActivity(updatedActivity,token)
+      navigate('/activities')
       fetchActivities()
     }
 
