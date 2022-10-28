@@ -5,7 +5,7 @@ import { updateActivity } from '../api';
 const EditAnActivity = ({ activities, fetchActivities, navigate, token}) => {
   const { activityID } = useParams();
   if (activities.length) {
-    const currentActivity = activities.find(activity => activity.id === activityID * 1);
+    const currentActivity = activities.filter(activity => activity.id === parseInt( activityID));
 
     console.log(activities)
     const { name, description } = currentActivity;
