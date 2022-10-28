@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
 
-const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines})  => {
+const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines, getMe})  => {
     const [searchTerm, setSearchTerm] = useState('');
     
     
@@ -11,6 +11,10 @@ const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines})  => {
     }
     const filteredRoutines = myRoutines.filter(routine => routineMatches(routine, searchTerm))
     const RoutinesToDisplay = searchTerm.length ? filteredRoutines : myRoutines;
+
+    useEffect(() => {
+        getMe();
+      }, [token])
 
     return(
         <div className='myRoutinesDiv'>
