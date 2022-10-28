@@ -25,6 +25,7 @@ const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities, setAdd
         
         <form onSubmit={(event) => {
             event.preventDefault();
+            setAddActivity(false)
             addActivity();
             fetchMyRoutines();
         }}>
