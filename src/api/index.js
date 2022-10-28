@@ -193,10 +193,14 @@ export const updateRoutine = async(token, {name, goal, isPublic, id}) => {
   }
 }
 
-export const attachRoutineActivity = async({routineId, count, duration, activityId}) => {
+export const attachRoutineActivity = async(token, {routineId, count, duration, activityId}) => {
   try {
     const response = await fetch(`${baseURL}/routines/${routineId}/activities`, {
       method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({
         activityId: activityId,
         count: count,

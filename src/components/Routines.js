@@ -26,9 +26,9 @@ const Routines = ({ routines, token, fetchRoutines})  => {
                     <ul>
                     {
                         activities.map((activity) => {
-                            const {name, description, duration, count} = activity;
+                            const {name, description, duration, count, id} = activity;
                             return (
-                                <li>
+                                <li key={id}>
                                     <h5>{name}</h5>
                                     <p>Description: {description}</p>
                                     <p>Duration: {duration}</p>
