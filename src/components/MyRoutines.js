@@ -80,12 +80,13 @@ const CreateRoutine = ({fetchMyRoutines, token, createRoutine}) => {
             fetchMyRoutines()}}>
             <input className='textInput' type='text' placeholder='name' value={name} onChange={(event) => setName(event.target.value)}/>
             <input className='textInput' type='text' placeholder='goal' value={goal} onChange={(event) => setGoal(event.target.value)}/>
-            <label>isPublic</label>
+            <span>isPublic
             <input
             type='checkbox'
             onChange={(event) => setIsPublic(event.target.checked)}
             />
-            <button type='submit'>Confirm add post</button>
+            </span>
+            <button type='submit'>Confirm Create Routine</button>
             
         </form>
     )
