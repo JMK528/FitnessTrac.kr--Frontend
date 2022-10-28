@@ -195,14 +195,12 @@ export const updateRoutine = async(token, {name, goal, isPublic, id}) => {
 
 export const attachRoutineActivity = async({routineId, count, duration, activityId}) => {
   try {
-
-    console.log(routineId, count, duration, activityId)
     const response = await fetch(`${baseURL}/routines/${routineId}/activities`, {
       method: "POST",
       body: JSON.stringify({
-        activityId: 27,
-        count: 2,
-        duration: 20
+        activityId: activityId,
+        count: count,
+        duration: duration
       })
     })
     const result = await response.json();
