@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom'
-import {attachRoutineActivity} from '../api'
-
+import { useParams, Link } from 'react-router-dom'
+import {attachRoutineActivity, deleteRoutineActivity} from '../api'
 
 const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities, setAddActivity, token}) => {
     const [activityId, setActivityId] = useState(undefined)
@@ -72,6 +71,10 @@ const EditRoutine = ({myRoutines, navigate, fetchMyRoutines, updateRoutine, toke
     const [newGoal, setNewGoal] = useState(goal)
     const [newIsPublic, setNewIsPublic] = useState(isPublic)
 
+    async function deleteActivity(token, id) {
+        const response = await deleteRoutineActivity(token, id)
+    }
+
     async function editRoutine() {
         const updatedRoutine = {
             name: newName,
@@ -119,13 +122,18 @@ const EditRoutine = ({myRoutines, navigate, fetchMyRoutines, updateRoutine, toke
 
                     {
                         activities.map((activity) => {
-                            const {name, description, duration, count, id} = activity;
+                            const {name, description, duration, count, id, routineActivityId} = activity;
                             return (
                                 <li key={id}>
                                     <h5>{name}</h5>
                                     <p>Description: {description}</p>
                                     <p>Duration: {duration}</p>
                                     <p>Count: {count}</p>
+                                    <Link className='routineButtons' to={`/myroutines/editroutine/editactivity/${routineActivityId}`}>Edit</Link>
+                                    <button className='Buttons' onClick={() => {
+                                        deleteActivity(token, routineActivityId)
+                                        fetchMyRoutines();
+                                    }}>Delete</button>
                                 </li>
                             )
                         })

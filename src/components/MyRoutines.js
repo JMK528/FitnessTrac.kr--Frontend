@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-
+import { deleteRoutine } from '../api';
 
 const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines, getMe})  => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -11,6 +11,10 @@ const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines, getMe})
     }
     const filteredRoutines = myRoutines.filter(routine => routineMatches(routine, searchTerm))
     const RoutinesToDisplay = searchTerm.length ? filteredRoutines : myRoutines;
+    async function removeRoutine(token, _id) {
+        await deleteRoutine(token, _id)
+    }
+
 
     useEffect(() => {
         getMe();
@@ -32,6 +36,10 @@ const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines, getMe})
                     <p>Goal: {goal}</p>
                     <p>Creator: {creatorName}</p>
                     <Link className='routineButtons' to={`/myroutines/editroutine/${id}`}>Edit</Link>
+                    <button className='postButtons' onClick={() => {
+                                        removeRoutine(token, id)
+                                        fetchMyRoutines();
+                                    }}>Delete</button>
                     <h4>Activities</h4>
                     {
                         activities.map((activity) => {
