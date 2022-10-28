@@ -139,6 +139,7 @@ const App = () => {
                   fetchMyRoutines={fetchMyRoutines}
                   updateRoutine={updateRoutine}
                   token={token}
+                  allActivities={activities}
                 />}
               />        
                 <Route

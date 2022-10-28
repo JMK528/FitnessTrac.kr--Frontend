@@ -1,9 +1,62 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom'
+import {attachRoutineActivity, getActivities} from '../api'
 
 
+const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities}) => {
+    const [activityId, setActivityId] = useState(null)
+    const [count, setCount] = useState(0)
+    const [duration, setDuration] = useState(0)
+    
+    async function addActivity() {
+        const newRoutineActivity = {
+            routineId,
+            count,
+            duration,
+            activityId
+        }
+        console.log(newRoutineActivity)
+        const response = await attachRoutineActivity(newRoutineActivity)
+        console.log(response)
+    }
 
-const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines, updateRoutine, token}) => {
+
+    return (
+        <form onSubmit={(event) => {
+            event.preventDefault();
+            addActivity();
+            fetchMyRoutines();
+        }}>
+        <select 
+        name="activities"
+        id="select-activity"
+        value={activityId} 
+        onChange={(event) => setActivityId(event.target.value * 1)}>
+        <option value="">select an option</option>
+        {/* map over the classificationList, return an <option /> */
+        allActivities.map((activity, idx) => {
+          return <option key={idx} value={activity.id}>{activity.name}</option>
+        })
+        }
+      </select>
+      <input
+            className='textInput'
+            type='text'
+            placeholder='count'
+            onChange={(event) => setCount(event.target.value * 1)}
+            />
+        <input
+            className='textInput'
+            type='text'
+            placeholder='duration'
+            onChange={(event) => setDuration(event.target.value * 1)}
+            />
+        <button type='submit'>Add Activity</button>
+        </form>
+    )
+}
+
+const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines, updateRoutine, token, allActivities}) => {
     const { _id } = useParams();
 
 
@@ -53,6 +106,7 @@ const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines, updateRoutine
             <button type='submit'>Edit Routine</button>
         </form>
         <h4>Activities</h4>
+                    <AddActivityToRoutine routineId={_id} fetchMyRoutines={fetchMyRoutines} allActivities={allActivities} />
                     {
                         activities.map((activity) => {
                             const {name, description, duration, count, id} = activity;

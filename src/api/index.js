@@ -173,7 +173,6 @@ export const getMyRoutines = async(token, username) => {
 }
 
 export const updateRoutine = async(token, {name, goal, isPublic, id}) => {
-  console.log('beginning update')
   try {
     const response = await fetch(`${baseURL}/routines/${id}`, {
       method: "PATCH",
@@ -191,5 +190,24 @@ export const updateRoutine = async(token, {name, goal, isPublic, id}) => {
     return result
   } catch (error) {
     console.log(`error updating routine ${name}`)
+  }
+}
+
+export const attachRoutineActivity = async({routineId, count, duration, activityId}) => {
+  try {
+
+    console.log(routineId, count, duration, activityId)
+    const response = await fetch(`${baseURL}/routines/${routineId}/activities`, {
+      method: "POST",
+      body: JSON.stringify({
+        activityId: 27,
+        count: 2,
+        duration: 20
+      })
+    })
+    const result = await response.json();
+    return result
+  } catch (error) {
+    console.log(`error creating routine activity ${routineId}`)
   }
 }
