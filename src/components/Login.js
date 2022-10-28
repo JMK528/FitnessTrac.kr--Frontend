@@ -8,8 +8,7 @@ const Login = ({ setToken, navigate }) => {
   const [password, setPassword] = useState('');
   const handleSubmit = async () => {
     const results = await loginUser(username, password);
-    console.log(results);
-    if (results) {
+    if (!results.error) {
       setToken(results.token);
       window.localStorage.setItem('token', results.token);
       navigate('/activities');

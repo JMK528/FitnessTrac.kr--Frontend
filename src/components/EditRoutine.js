@@ -56,7 +56,7 @@ const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities}) => {
     )
 }
 
-const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines, updateRoutine, token, allActivities}) => {
+const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines, updateRoutine, token, allActivities, getMe}) => {
     const { _id } = useParams();
 
 
