@@ -209,3 +209,19 @@ export const attachRoutineActivity = async({routineId, count, duration, activity
     console.log(`error creating routine activity ${routineId}`)
   }
 }
+
+export const deleteRoutine = async(token) => {
+  try {
+    const response = await fetch(`${baseURL}/routines/${id}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    const result = await response.json();
+    return result
+  } catch (error) {
+    console.log(`error deleting routine`)
+  }
+}
