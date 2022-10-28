@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
 import './style.css';
-
+import { CssBaseline, Paper } from '@mui/material';
 import {
   Navbar,
   Home,
@@ -11,13 +11,13 @@ import {
   Activities,
   CreateAnActivity,
   EditAnActivity,
- 
+
   MyRoutines,
   Routines,
   EditRoutine
 } from './components';
 
-import { 
+import {
   getActivities,
   getUserDetails,
   getRoutines,
@@ -51,9 +51,9 @@ const App = () => {
   }
 
   async function fetchActivities() {
-    const results = await getActivities()    
+    const results = await getActivities()
     setActivities(results);
-    
+
   }
 
   async function fetchRoutines() {
@@ -83,104 +83,108 @@ const App = () => {
     fetchActivities()
   }, [])
 
-  
+
   useEffect(() => {
     fetchRoutines()
   }, [token])
-  
+
   //   useEffect(() => {
-    //     fetchPosts()
-    //   }, [token])
-    
-    useEffect(() => {
-      getMe();
-    }, [token])
-    
-    useEffect(() => {
-      fetchMyRoutines()
-    }, [user])
+  //     fetchPosts()
+  //   }, [token])
+
+  useEffect(() => {
+    getMe();
+  }, [token])
+
+  useEffect(() => {
+    fetchMyRoutines()
+  }, [user])
 
   return (
-
-        <header>
-          <nav>
-            <Navbar 
-            logout={logout} token={token} 
+    <React.Fragment>
+      <CssBaseline />
+      <Paper  elevation={16}>
+      <header>
+        <nav>
+          <Navbar
+            logout={logout} token={token}
+          />
+          <Routes>
+            <Route
+              path='/'
+              element={<Home />}
             />
-            <Routes>
-              <Route
-                path='/'
-                element={<Home />}
-              />        
-                  <Route
-                path='/myroutines'
-                element={<MyRoutines
-                  navigate={navigate} 
-                  myRoutines={myRoutines}
-                  createRoutine={createRoutine}
-                  token={token}
-                  getMe={getMe}
-                  fetchMyRoutines={fetchMyRoutines}
-                  />}
-              />
-              <Route
-                path='/routines'
-                element={<Routines
-                  user={user}
-                  navigate={navigate} 
-                  routines={routines}/>}
-              />
-              <Route
-                path='/myroutines/editroutine/:_id'
-                element={<EditRoutine
-                  myRoutines={myRoutines}
-                  user={user}
-                  navigate={navigate}
-                  fetchMyRoutines={fetchMyRoutines}
-                  updateRoutine={updateRoutine}
-                  token={token}
-                />}
-              />        
-                <Route
-                path='/activities'
-                element={<Activities
-                  activities={activities}                 
-                  token={token}
-                  navigate={navigate} 
-                  />}
-              />
-             
-          
-              <Route
-                path='/activities/create-activity'
-                element={<CreateAnActivity
-                  fetchActivities={fetchActivities}
-                  token={token}
-                  navigate={navigate} />}
-              />  
-              <Route
-                path='/activities/edit-activity/:activityID'
-                element={<EditAnActivity
-                  fetchActivities={fetchActivities}
-                  navigate={navigate}
-                  activities={activities}
-                  token={token}
-                   />}
-              />      
-              <Route
-                path='/login'
-                element={<Login
-                  setToken={setToken}
-                  navigate={navigate} />} />
-              <Route
-                path='/register'
-                element={<Register
-                  setToken={setToken}
-                  token={token}
-                  navigate={navigate} />} />
-            </Routes>
-          </nav>
-        </header>   
+            <Route
+              path='/myroutines'
+              element={<MyRoutines
+                navigate={navigate}
+                myRoutines={myRoutines}
+                createRoutine={createRoutine}
+                token={token}
+                getMe={getMe}
+                fetchMyRoutines={fetchMyRoutines}
+              />}
+            />
+            <Route
+              path='/routines'
+              element={<Routines
+                user={user}
+                navigate={navigate}
+                routines={routines} />}
+            />
+            <Route
+              path='/myroutines/editroutine/:_id'
+              element={<EditRoutine
+                myRoutines={myRoutines}
+                user={user}
+                navigate={navigate}
+                fetchMyRoutines={fetchMyRoutines}
+                updateRoutine={updateRoutine}
+                token={token}
+              />}
+            />
+            <Route
+              path='/activities'
+              element={<Activities
+                activities={activities}
+                token={token}
+                navigate={navigate}
+              />}
+            />
+
+
+            <Route
+              path='/activities/create-activity'
+              element={<CreateAnActivity
+                fetchActivities={fetchActivities}
+                token={token}
+                navigate={navigate} />}
+            />
+            <Route
+              path='/activities/edit-activity/:activityID'
+              element={<EditAnActivity
+                fetchActivities={fetchActivities}
+                navigate={navigate}
+                activities={activities}
+                token={token}
+              />}
+            />
+            <Route
+              path='/login'
+              element={<Login
+                setToken={setToken}
+                navigate={navigate} />} />
+            <Route
+              path='/register'
+              element={<Register
+                setToken={setToken}
+                token={token}
+                navigate={navigate} />} />
+          </Routes>
+        </nav>
+      </header>
+      </Paper>
+    </React.Fragment>
   )
 }
 

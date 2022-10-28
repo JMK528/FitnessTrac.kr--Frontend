@@ -24,7 +24,7 @@ const CreateAnActivity = ( { token, fetchActivities,navigate }) => {
       
       <form onSubmit={(event) => {
         event.preventDefault();
-        addPost();
+        addActivity();
         
       }}>
         <h1>Create An Activity</h1>
