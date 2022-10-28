@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom'
-import {attachRoutineActivity, getActivities} from '../api'
+import {attachRoutineActivity} from '../api'
 
 
-const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities, setAddActivity}) => {
+const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities, setAddActivity, token}) => {
     const [activityId, setActivityId] = useState(undefined)
     const [count, setCount] = useState(0)
     const [duration, setDuration] = useState(0)
@@ -16,7 +16,7 @@ const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities, setAdd
             activityId
         }
         console.log(newRoutineActivity)
-        const response = await attachRoutineActivity(newRoutineActivity)
+        const response = await attachRoutineActivity(token, newRoutineActivity)
         console.log(response)
     }
 
@@ -58,7 +58,7 @@ const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities, setAdd
     )
 }
 
-const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines, updateRoutine, token, allActivities, getMe}) => {
+const EditRoutine = ({myRoutines, navigate, fetchMyRoutines, updateRoutine, token, allActivities}) => {
     const { _id } = useParams();
 
 
@@ -111,11 +111,11 @@ const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines, updateRoutine
         </form>
         <h4>Activities</h4>
                     {addActivity
-                      ? <AddActivityToRoutine routineId={_id} fetchMyRoutines={fetchMyRoutines} allActivities={allActivities} setAddActivity={setAddActivity} />
+                      ? <AddActivityToRoutine routineId={_id} fetchMyRoutines={fetchMyRoutines} allActivities={allActivities} setAddActivity={setAddActivity} token={token} />
                       : <button onClick={() => setAddActivity(true)}>add an activity</button>
 
                     }
-                    
+
                     {
                         activities.map((activity) => {
                             const {name, description, duration, count, id} = activity;
