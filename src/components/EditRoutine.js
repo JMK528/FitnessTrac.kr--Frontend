@@ -100,11 +100,13 @@ const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines, updateRoutine
             placeholder={goal}
             onChange={(event) => setNewGoal(event.target.value)}
             />
-            <label>isPublic</label>
+            <span>isPublic
             <input
             type='checkbox'
             onChange={(event) => setNewIsPublic(event.target.checked)}
             />
+            </span>
+            
             <button type='submit'>Edit Routine</button>
         </form>
         <h4>Activities</h4>
