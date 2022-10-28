@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import {attachRoutineActivity, getActivities} from '../api'
 
 
-const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities}) => {
+const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities, setAddActivity}) => {
     const [activityId, setActivityId] = useState(undefined)
     const [count, setCount] = useState(0)
     const [duration, setDuration] = useState(0)
@@ -22,6 +22,7 @@ const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities}) => {
 
 
     return (
+        
         <form onSubmit={(event) => {
             event.preventDefault();
             addActivity();
@@ -52,6 +53,7 @@ const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities}) => {
             onChange={(event) => setDuration(event.target.value * 1)}
             />
         <button type='submit'>Add Activity</button>
+        <button onClick={() => setAddActivity(false)}>cancel action</button>
         </form>
     )
 }
@@ -106,7 +108,12 @@ const EditRoutine = ({myRoutines, user, navigate, fetchMyRoutines, updateRoutine
             <button type='submit'>Edit Routine</button>
         </form>
         <h4>Activities</h4>
-                    <AddActivityToRoutine routineId={_id} fetchMyRoutines={fetchMyRoutines} allActivities={allActivities} />
+                    {addActivity
+                      ? <AddActivityToRoutine routineId={_id} fetchMyRoutines={fetchMyRoutines} allActivities={allActivities} setAddActivity={setAddActivity} />
+                      : <button onClick={() => setAddActivity(true)}>add an activity</button>
+
+                    }
+                    
                     {
                         activities.map((activity) => {
                             const {name, description, duration, count, id} = activity;
