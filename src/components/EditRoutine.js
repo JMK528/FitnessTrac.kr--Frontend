@@ -4,7 +4,7 @@ import {attachRoutineActivity, getActivities} from '../api'
 
 
 const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities}) => {
-    const [activityId, setActivityId] = useState(null)
+    const [activityId, setActivityId] = useState(undefined)
     const [count, setCount] = useState(0)
     const [duration, setDuration] = useState(0)
     
@@ -33,7 +33,7 @@ const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities}) => {
         value={activityId} 
         onChange={(event) => setActivityId(event.target.value * 1)}>
         <option value="">select an option</option>
-        {/* map over the classificationList, return an <option /> */
+        {
         allActivities.map((activity, idx) => {
           return <option key={idx} value={activity.id}>{activity.name}</option>
         })
