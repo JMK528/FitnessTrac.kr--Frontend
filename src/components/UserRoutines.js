@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
-import { Button, Card, TextField } from '@mui/material';
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom'
+import { getMyRoutines } from '../api';
 
-
-const Routines = ({ routines, token, fetchRoutines})  => {
+const UserRoutines = ({ token })  => {
     const [searchTerm, setSearchTerm] = useState('');
+    const { username } = useParams()
+    const [userRoutines, setUserRoutines] = useState([])
+
+    async function fetchUserRoutines() {
+        const results = await getMyRoutines(token, username)
+        setUserRoutines(results)
+      }
+
+
+
+
+
     const routineMatches = (routine, text) => {
         if(routine.name.toUpperCase().includes(text.toUpperCase())) return true
     }
-    const filteredRoutines = routines.filter(routine => routineMatches(routine, searchTerm))
-    const RoutinesToDisplay = searchTerm.length ? filteredRoutines : routines;
+    const filteredRoutines = userRoutines.filter(routine => routineMatches(routine, searchTerm))
+    const RoutinesToDisplay = searchTerm.length ? filteredRoutines : userRoutines;
+
+
+    useEffect(() => {
+        fetchUserRoutines();
+      }, [username])
+
     return(
+        <div className='myRoutinesDiv'>
         <div className='routinesDiv'>
             <form>
                 <label>Search</label>
@@ -23,9 +41,8 @@ const Routines = ({ routines, token, fetchRoutines})  => {
                 <div className='routine' key={id}>
                     <h3>{name}</h3>
                     <p>Goal: {goal}</p>
-                    <Link to={`/routines/${creatorName}`}><p>Creator: {creatorName}</p></Link>
+                    <p>Creator: {creatorName}</p>
                     <h4>Activities</h4>
-                    <ul>
                     {
                         activities.map((activity) => {
                             const {name, description, duration, count, id} = activity;
@@ -39,19 +56,16 @@ const Routines = ({ routines, token, fetchRoutines})  => {
                             )
                         })
                     }
-                    </ul>
                 </div>
             )
         })
        }
+       </div>
+    
        </div>
     )
 }
 
 
 
-
-
-
-
-export default Routines;
+export default UserRoutines;
