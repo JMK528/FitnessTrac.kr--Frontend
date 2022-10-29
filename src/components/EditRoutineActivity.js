@@ -25,6 +25,7 @@ const EditRoutineActivity = ({token, fetchMyRoutines, routineActivityId, count, 
             event.preventDefault();
             editRoutineActivity();
             fetchMyRoutines();
+            setEditing(false)
         }}>
             <input
             className='textInput'
