@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { useParams, Link } from 'react-router-dom'
 import {attachRoutineActivity, deleteRoutineActivity} from '../api'
+import {EditRoutineActivity} from '../components'
+
 
 const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities, setAddActivity, token}) => {
     const [activityId, setActivityId] = useState(undefined)
@@ -129,7 +131,7 @@ const EditRoutine = ({myRoutines, navigate, fetchMyRoutines, updateRoutine, toke
                                     <p>Description: {description}</p>
                                     <p>Duration: {duration}</p>
                                     <p>Count: {count}</p>
-                                    <Link className='routineButtons' to={`/myroutines/editroutine/editactivity/${routineActivityId}`}>Edit</Link>
+                                    <EditRoutineActivity count={count} duration={duration} routineActivityId={routineActivityId} token={token} fetchMyRoutines={fetchMyRoutines}/>
                                     <button className='Buttons' onClick={() => {
                                         deleteActivity(token, routineActivityId)
                                         fetchMyRoutines();

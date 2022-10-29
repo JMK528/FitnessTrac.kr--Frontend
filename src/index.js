@@ -130,30 +130,18 @@ const App = () => {
                   navigate={navigate} 
                   routines={routines}/>}
               />
-              <Route
-                path='/myroutines/editroutine/editactivity/:_id'
-                element={<EditRoutineActivity
-                  myRoutines={myRoutines}
-                  user={user}
-                  navigate={navigate}
-                  fetchMyRoutines={fetchMyRoutines}
-                  updateRoutine={updateRoutine}
-                  token={token}
-                  allActivities={activities}
-                />}
-              />        
-              <Route
-                path='/myroutines/editroutine/:_id'
-                element={<EditRoutine
-                  myRoutines={myRoutines}
-                  user={user}
-                  navigate={navigate}
-                  fetchMyRoutines={fetchMyRoutines}
-                  updateRoutine={updateRoutine}
-                  token={token}
-                  allActivities={activities}
-                />}
-              />        
+                <Route
+                  path='/myroutines/editroutine/:_id'
+                  element={<EditRoutine
+                    myRoutines={myRoutines}
+                    user={user}
+                    navigate={navigate}
+                    fetchMyRoutines={fetchMyRoutines}
+                    updateRoutine={updateRoutine}
+                    token={token}
+                    allActivities={activities}
+                  />}
+                />        
                 <Route
                 path='/activities'
                 element={<Activities
@@ -162,8 +150,6 @@ const App = () => {
                   navigate={navigate} 
                   />}
               />
-             
-          
               <Route
                 path='/activities/create-activity'
                 element={<CreateAnActivity
