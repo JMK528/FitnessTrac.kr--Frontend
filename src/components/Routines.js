@@ -31,7 +31,10 @@ const Routines = ({ routines, token, fetchRoutines})  => {
                             const {name, description, duration, count, id} = activity;
                             return (
                                 <li key={id}>
-                                    <h5>{name}</h5>
+                                    <Link   style={{
+                                                            textDecoration: 'none'
+                                                        }}
+                                                        to={`/activities/routines/${id}`}><h5>{name}</h5></Link>
                                     <p>Description: {description}</p>
                                     <p>Duration: {duration}</p>
                                     <p>Count: {count}</p>
