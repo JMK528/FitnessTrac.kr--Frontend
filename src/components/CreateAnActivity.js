@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import { createActivity } from '../api';
-import { Popover, Button, Typography } from "@mui/material";
-
+import {
+  Popover,
+  Button,
+  Typography,
+  TextField,
+  Card,  
+  CardContent,
+  CardMedia,
+  CardActionArea,
+  CardActions
+} from "@mui/material";
+import navPIC from "./images/CreateActivity.png"
 
 const CreateAnActivity = ({ token, fetchActivities, navigate }) => {
   const [name, setName] = useState('');
@@ -39,46 +49,59 @@ const CreateAnActivity = ({ token, fetchActivities, navigate }) => {
   const id = open ? 'simple-popover' : undefined;
 
   return (
+    <Card elevation={6} style={{ background: '#50514F' }}>
+      <form onSubmit={(event) => {
+        event.preventDefault();      
+      }}>
 
-    <form onSubmit={(event) => {
-      event.preventDefault();
-      addActivity();
+        <CardContent>
+        <CardMedia>
+          <img style={{
+            backgroundImage: `url(${navPIC})`, height: '25rem', width: '100%',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat'
+          }} src={navPIC} />
+        </CardMedia>
+          <Typography variant='h1' component='h3' style={{ color: '#C3B299' }}>
+            Create An Activity
+          </Typography>
+          <TextField style={{ background: '#FFFCFF', color: '#000000'}}
+            type='text'
+            label="Name*"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+          <TextField style={{ background: '#FFFCFF', color: '#000000'}}
+            type='text'
+            label="Description*"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+          />
+        </CardContent>
 
-    }}>
+        <CardActionArea>
+          <CardActions>
+            <Button style={{ height: '3rem', margin: '.25rem' }} aria-describedby={id} variant="contained" onClick={handleClick}>
+              Create A New Activity
+            </Button>
+            <Popover
+              id={id}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+            >
+              <Typography sx={{ p: 2 }}>{error}</Typography>
+            </Popover>
+          </CardActions>
+        </CardActionArea>
 
-
-      <h1>Create An Activity</h1>
-      <input
-        type='text'
-        label="Name*"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-      />
-      <input
-        type='text'
-        label="Description*"
-        value={description}
-        onChange={(event) => setDescription(event.target.value)}
-      />
-      <div>
-        <Button style={{ height: '3rem', margin: '.25rem' }} aria-describedby={id} variant="contained" onClick={handleClick}>
-          Create A New Activity
-        </Button>
-        <Popover
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-        >
-          <Typography sx={{ p: 2 }}>{error}</Typography>
-        </Popover>
-      </div>
-    </form>
-
+      </form>
+    </Card>
   )
 }
 

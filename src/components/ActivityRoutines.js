@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
-import { Button, Card, TextField } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom'
+import {activityRoutines} from '../api';
 
-const Routines = ({ routines, token, fetchRoutines})  => {
+
+const ActivityRoutines = ({ activities }) => {
+    const { activityId } = useParams();
+    const [routines,setRoutines] = useState([])
     const [searchTerm, setSearchTerm] = useState('');
-    const routineMatches = (routine, text) => {
-        if(routine.name.toUpperCase().includes(text.toUpperCase())) return true
-    }
+    async function fetchActivityRoutines() {        
+        const results = await activityRoutines(activityId)
+        setRoutines(results);
+    
+      }
+useEffect(()=>{
+    fetchActivityRoutines()
+},[])
+const routineMatches = (routine, text) => {
+    if(routine.name.toUpperCase().includes(text.toUpperCase())) return true
+}
     const filteredRoutines = routines.filter(routine => routineMatches(routine, searchTerm))
     const RoutinesToDisplay = searchTerm.length ? filteredRoutines : routines;
     return(
@@ -51,5 +63,4 @@ const Routines = ({ routines, token, fetchRoutines})  => {
 
 
 
-
-export default Routines;
+export default ActivityRoutines;

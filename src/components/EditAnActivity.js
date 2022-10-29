@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { updateActivity } from '../api';
+import {
+  Button,
+  Typography,
+  TextField,
+  Card,
+} from "@mui/material";
 
-const EditAnActivity = ({ activities, fetchActivities, navigate, token}) => {
+
+const EditAnActivity = ({ activities, fetchActivities, navigate, token }) => {
   const { activityID } = useParams();
   if (activities.length) {
-    const currentActivity = activities.filter(activity => activity.id === parseInt( activityID));
+    const currentActivity = activities.filter(activity => activity.id === parseInt(activityID));
 
     console.log(activities)
     const { name, description } = currentActivity;
@@ -20,8 +27,8 @@ const EditAnActivity = ({ activities, fetchActivities, navigate, token}) => {
         description: newDescription,
         id: activityID
       }
-      console.log("something",token)
-      await updateActivity(updatedActivity,token)
+      console.log("something", token)
+      await updateActivity(updatedActivity, token)
       navigate('/activities')
       fetchActivities()
     }

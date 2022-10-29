@@ -120,6 +120,21 @@ export const updateActivity = async ({ name, description,id }, token) => {
   }
 }
 
+export const activityRoutines = async (activityId) => {
+  try {
+    const response = await fetch(`${baseURL}/activities/${activityId}/routines`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    const result = await response.json();
+    console.log(result,"ActivityRoutine")
+    return result
+  } catch (error) {
+    console.log('error getting all public routines')
+  } 
+}
+
 
   
 export const getRoutines = async() => {

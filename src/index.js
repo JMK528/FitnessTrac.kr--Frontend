@@ -11,6 +11,7 @@ import {
   Activities,
   CreateAnActivity,
   EditAnActivity,
+  ActivityRoutines,
   MyRoutines,
   Routines,
   EditRoutine
@@ -102,7 +103,7 @@ const App = () => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Paper  elevation={16}>
+      <Paper  elevation={16} style={{background:'#000000' }}>
       <header>
         <nav>
           <Navbar
@@ -167,6 +168,15 @@ const App = () => {
                 navigate={navigate}
                 activities={activities}
                 token={token}
+              />}
+            />
+                <Route
+              path='/activities/routines/:activityId'
+              element={<ActivityRoutines
+                fetchActivities={fetchActivities}
+                fetchRoutines={fetchRoutines}
+                navigate={navigate}
+                activities={activities}                
               />}
             />
             <Route
