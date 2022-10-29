@@ -4,7 +4,7 @@ import {attachRoutineActivity, deleteRoutineActivity} from '../api'
 import {EditRoutineActivity} from '../components'
 
 
-const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities, setAddActivity, token}) => {
+const AddActivityToRoutine = ({routineId, fetchMyRoutines, filteredActivities, setAddActivity, token}) => {
     const [activityId, setActivityId] = useState(undefined)
     const [count, setCount] = useState(0)
     const [duration, setDuration] = useState(0)
@@ -37,7 +37,7 @@ const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities, setAdd
         onChange={(event) => setActivityId(event.target.value * 1)}>
         <option value="">select an option</option>
         {
-        allActivities.map((activity, idx) => {
+        filteredActivities.map((activity, idx) => {
           return <option key={idx} value={activity.id}>{activity.name}</option>
         })
         }
@@ -63,7 +63,6 @@ const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities, setAdd
 const EditRoutine = ({myRoutines, navigate, fetchMyRoutines, updateRoutine, token, allActivities}) => {
     const { _id } = useParams();
 
-
     const [currentRoutine] = myRoutines.filter(routine => routine.id === _id * 1);
     const {activities, creatorId, creatorName, goal, id, isPublic, name} = currentRoutine;
 
@@ -72,6 +71,19 @@ const EditRoutine = ({myRoutines, navigate, fetchMyRoutines, updateRoutine, toke
     const [newName, setNewName] = useState(name)
     const [newGoal, setNewGoal] = useState(goal)
     const [newIsPublic, setNewIsPublic] = useState(isPublic)
+
+
+    const activityMatches = (activity, activities) => {
+        let i = 0
+        while(i < activities.length) {
+            if(activities[i].id === activity.id) return false
+            else {
+                i++
+            }
+        }
+        return true
+    }
+    const filteredActivities = allActivities.filter(activity => activityMatches(activity, activities))
 
     async function deleteActivity(token, id) {
         const response = await deleteRoutineActivity(token, id)
@@ -117,7 +129,7 @@ const EditRoutine = ({myRoutines, navigate, fetchMyRoutines, updateRoutine, toke
         </form>
         <h4>Activities</h4>
                     {addActivity
-                      ? <AddActivityToRoutine routineId={_id} fetchMyRoutines={fetchMyRoutines} allActivities={allActivities} setAddActivity={setAddActivity} token={token} />
+                      ? <AddActivityToRoutine routineId={_id} fetchMyRoutines={fetchMyRoutines} filteredActivities={filteredActivities} setAddActivity={setAddActivity} token={token} />
                       : <button onClick={() => setAddActivity(true)}>add an activity</button>
 
                     }
