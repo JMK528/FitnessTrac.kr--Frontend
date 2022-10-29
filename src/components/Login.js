@@ -6,6 +6,7 @@ import './Register';
 const Login = ({ setToken, navigate }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+ 
   const handleSubmit = async () => {
     const results = await loginUser(username, password);
     if (!results.error) {
