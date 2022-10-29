@@ -45,14 +45,14 @@ const AddActivityToRoutine = ({routineId, fetchMyRoutines, allActivities, setAdd
       <input
             className='textInput'
             type='text'
-            placeholder='count'
-            onChange={(event) => setCount(event.target.value * 1)}
+            placeholder='duration'
+            onChange={(event) => setDuration(event.target.value * 1)}
             />
         <input
             className='textInput'
             type='text'
-            placeholder='duration'
-            onChange={(event) => setDuration(event.target.value * 1)}
+            placeholder='count'
+            onChange={(event) => setCount(event.target.value * 1)}
             />
         <button type='submit'>Add Activity</button>
         <button onClick={() => setAddActivity(false)}>cancel action</button>
