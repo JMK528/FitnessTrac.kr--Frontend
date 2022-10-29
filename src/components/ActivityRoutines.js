@@ -14,7 +14,7 @@ const ActivityRoutines = ({ activities }) => {
       }
 useEffect(()=>{
     fetchActivityRoutines()
-},[])
+},[activityId])
 const routineMatches = (routine, text) => {
     if(routine.name.toUpperCase().includes(text.toUpperCase())) return true
 }
