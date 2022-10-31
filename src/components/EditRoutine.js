@@ -189,7 +189,7 @@ const EditRoutine = ({ myRoutines, navigate, fetchMyRoutines, updateRoutine, tok
                     </span>
 
                     <Button style={{
-                        marginTop: "2%",
+                        
                         width: "100%",
                         borderRadius: 35,
                         background: "#001242",
@@ -202,8 +202,8 @@ const EditRoutine = ({ myRoutines, navigate, fetchMyRoutines, updateRoutine, tok
                 {addActivity
                     ? <AddActivityToRoutine routineId={_id} fetchMyRoutines={fetchMyRoutines} filteredActivities={filteredActivities} setAddActivity={setAddActivity} token={token} />
                     :  <Button style={{
-                        marginTop: "2%",
-                        width: "100%",
+                       
+                        width: "99%",
                         borderRadius: 35,
                         background: "#001242",
                         opacity: "70%",
@@ -243,6 +243,7 @@ const EditRoutine = ({ myRoutines, navigate, fetchMyRoutines, updateRoutine, tok
                                         background: "#001242",
                                         opacity: "70%",
                                         color: "#FFFCFF",
+                                        width:'94%'
                                       
                                     }} className='Buttons' onClick={() => {
                                         deleteActivity(token, routineActivityId)

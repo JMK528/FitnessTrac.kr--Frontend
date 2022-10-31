@@ -27,68 +27,70 @@ const EditAnActivity = ({ activities, fetchActivities, navigate, token }) => {
         description: newDescription,
         id: activityID
       }
-      console.log("something", token)
+
       await updateActivity(updatedActivity, token)
       navigate('/activities')
       fetchActivities()
     }
 
     return (
-<Card elevation={6} style={{ background: '#50514F', margin:'2rem 4rem ',
-      background: '#50514F',
-      color:'#FFFCFF',
-      textAlign:'center',
-      alignContent:'center'    
-    
-      }}> 
-      <div className="edit-main-div" >
-        <form onSubmit={(event) => {
-          event.preventDefault();
-          editActivity();
+      <Card elevation={6} style={{
+        background: '#50514F',
+        margin: '2rem 4rem 6rem 2rem',
+        padding: '2rem',
+        color: '#FFFCFF',
+        textAlign: 'center',
+        alignContent: 'center'
+
+      }}>
+        <div className="edit-main-div" >
+          <form onSubmit={(event) => {
+            event.preventDefault();
+            editActivity();
 
 
-        }}>
-          <h1>Edit Activity</h1>
+          }}>
+            <h1>Edit Activity</h1>
 
-          <TextField style={{ 
-          flexWrap:'center',
-          margin: '.25rem',         
-           width: '100%', 
-           backgroundColor: '#FFFCFF',
-           
-           }}
-            type='text'
-            placeholder={name}
-            onChange={(event) => setNewName(event.target.value)}
-          />
-          <TextField style={{ 
-          flexWrap:'center',
-          margin: '.25rem',         
-           width: '100%', 
-           backgroundColor: '#FFFCFF',
-           
-           }}
-            type='text'
-            placeholder={description}
-            onChange={(event) => setNewDescription(event.target.value)}
-          />
+            <TextField style={{
+              flexWrap: 'center',
+              margin: '.25rem',
+              width: '100%',
+              backgroundColor: '#FFFCFF',
 
-          <Button style={{
-            marginTop: "2%",
-            width: "100%",
-            borderRadius: 35,
-            background: "#001242",
-            opacity: "70%",
-            color: "#FFFCFF",
-            borderColor: "#24A6D1",
-          }}
-            type="submit"
-            variant="outlined"
-            onClick={() => {
-              editActivity();
-            }}>Edit Activity</Button>
-        </form>
-      </div>
+            }}
+              type='text'
+              placeholder={name}
+              onChange={(event) => setNewName(event.target.value)}
+            />
+            <TextField style={{
+              flexWrap: 'center',
+              margin: '.25rem',
+              width: '100%',
+              backgroundColor: '#FFFCFF',
+
+            }}
+              type='text'
+              placeholder={description}
+              onChange={(event) => setNewDescription(event.target.value)}
+            />
+
+            <Button style={{
+              marginTop: "2%",
+              width: "100%",
+              borderRadius: 35,
+              background: "#001242",
+              opacity: "70%",
+              color: "#FFFCFF",
+              borderColor: "#24A6D1",
+            }}
+              type="submit"
+              variant="outlined"
+              onClick={() => {
+                editActivity();
+              }}>Edit Activity</Button>
+          </form>
+        </div>
       </Card>
     )
   }

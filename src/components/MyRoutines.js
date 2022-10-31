@@ -31,7 +31,7 @@ const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines, getMe }
         <div className='myRoutinesDiv'>
             <div className='routinesDiv'>
                 <Card elevation={6} style={{
-                    background: '#50514F', margin: '2rem 4rem ',
+                     margin: '2rem 4rem ',
                     background: '#50514F',
                     color: '#FFFCFF',
                     textAlign: 'center',
@@ -50,18 +50,18 @@ const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines, getMe }
                     RoutinesToDisplay.map((routine) => {
                         const { activities, creatorId, creatorName, goal, id, isPublic, name } = routine;
                         return (
-                            <Card style={{ padding: '.5rem', margin: '.5rem', background: 'B4D2E7', width:'50%'}} elevation={6} key={id}>
+                            <Card style={{ padding: '.5rem', margin: '.5rem', background: '#50514F', width:'100%',color:'#FFFCFF'}} elevation={6} key={id}>
 
                                 <h3>{name}</h3>
                                 <p>Goal: {goal}</p>
                                 <p>Creator: {creatorName}</p>
                                 <Link style={{ textDecoration: 'none' }} className='routineButtons' to={`/myroutines/editroutine/${id}`}><Button
                                                         style={
-                                                            { height: '4rem', width: '100%', borderRadius: 15, background: '#001242' }
+                                                            { height: '4rem',margin:'.25rem', width: '99%', borderRadius: 15, color: '#FFFCFF', background: '#001242' }
                                                         }>Edit</Button></Link>
                                 <Button
                             style={
-                                { height: '4rem', width: '100%', borderRadius: 15, background: '#001242' }
+                                { height: '4rem',margin:'.25rem', width: '99%', borderRadius: 15, color: '#FFFCFF', background: '#001242' }
                             } className='postButtons' onClick={() => {
                                     removeRoutine(token, id)
                                     fetchMyRoutines();
@@ -78,7 +78,7 @@ const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines, getMe }
                                             }}
                                             to={`/activities/routines/${id}`}><Button
                                             style={
-                                                { height: '4rem', width: '100%', borderRadius: 15, background: '#001242' }
+                                                { height: '4rem', width: '100%', borderRadius: 15, background: '#001242',color:'#FFFCFF' }
                                             }><h5>{name}</h5></Button></Link>
                                             <p>Description: {description}</p>
                                             <p>Duration: {duration}</p>
@@ -125,7 +125,7 @@ const CreateRoutine = ({ fetchMyRoutines, token, createRoutine }) => {
     }
     return (
         <Card elevation={6} style={{
-            background: '#50514F', margin: '2rem 4rem ',
+            margin: '2rem 4rem ',
             background: '#50514F',
             color: '#FFFCFF',
             textAlign: 'center',

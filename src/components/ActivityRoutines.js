@@ -36,7 +36,7 @@ const routineMatches = (routine, text) => {
         RoutinesToDisplay.map((routine) => {
             const {activities, creatorId, creatorName, goal, id, isPublic, name} = routine;
             return (
-                <Card style={{ padding: '.5rem', margin: '.5rem', background: '#247BA0', width:'50%' }} elevation={6} >
+                <Card style={{ padding: '.5rem', margin: '.5rem', background: '#FFFCFF', width:'94%%' }} elevation={6} >
                 <div className='routine' key={id}>
                     <h3>{name}</h3>
                     <p>Goal: {goal}</p>
@@ -47,14 +47,14 @@ const routineMatches = (routine, text) => {
                         activities.map((activity) => {
                             const {name, description, duration, count, id} = activity;
                             return (
-                                <Card style={{ padding: '.5rem', margin: '.5rem', background: '#247BA0' }} elevation={6} >
+                                <Card style={{ padding: '.5rem', margin: '.5rem', background: '#247BA0',width:'98%' , color:'#FFFCFF'}} elevation={6} >
                                 <li key={id}>
                                     <Link   style={{
                                                             textDecoration: 'none'
                                                         }}
                                                         to={`/activities/routines/${id}`}><Button
                                                         style={
-                                                            { height: '4rem', width: '100%', borderRadius: 15, background: '#001242' }
+                                                            { height: '4rem', width: '100%', borderRadius: 15, background: '#001242', color:'#FFFCFF' }
                                                         }><h5>{name}</h5></Button></Link>
                                     <p>Description: {description}</p>
                                     <p>Duration: {duration}</p>

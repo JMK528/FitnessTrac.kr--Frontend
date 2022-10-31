@@ -24,6 +24,9 @@ const EditRoutineActivity = ({token, fetchMyRoutines, routineActivityId, count, 
 
 
     return (
+    
+
+    
         <div className='editRoutineActivityDiv'>
     {editing
         ?
@@ -85,10 +88,12 @@ const EditRoutineActivity = ({token, fetchMyRoutines, routineActivityId, count, 
            background: "#001242",
            opacity: "70%",
            color: "#FFFCFF",
+           width:'94%'
         
       }} onClick={() => setEditing(true)}>Edit</Button>
     }
         </div>
+       
     )
 }
 

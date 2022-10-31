@@ -18,41 +18,38 @@
    form {
     display:flex;
     flex-direction: column;
-    margin: 1rem;
-    padding: 1rem;  
+    margin: .25rem;
+    padding: .25rem;  
     justify-content: center;
   
    }
    body{    
-    padding: 4rem;
-    margin: 6rem;
+    padding: 1rem;
+    margin: .5rem;
   }
-  #root {    
-    color:#FFFCFF
-  }
+
 
 
   .myRoutinesDiv {
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     flex-wrap: wrap;
-    width: 100%;
+    width:100%;
+    
   }
   .createRoutineDiv {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
+    margin: auto;
   }
     
-  button {
-    color: #ffffff;
-    background-color: darkblue;
-  }
-  .routine {
+
+  /* .routine {
     width: 50%;
     background-color: white;
-    padding: 2vw;
-    margin-bottom: 2vh;
-  }
+    margin: 2rem 2rem .4rem .5rem; 
+    padding:  .25rem 2rem .5rem .5rem; 
+  } */
  
