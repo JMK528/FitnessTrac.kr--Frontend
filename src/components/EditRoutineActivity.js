@@ -24,13 +24,6 @@ const EditRoutineActivity = ({token, fetchMyRoutines, routineActivityId, count, 
 
 
     return (
-        <Card elevation={6} style={{ background: '#50514F', margin:'2rem 4rem ',
-      background: '#50514F',
-      color:'#FFFCFF',
-      textAlign:'center',
-      alignContent:'center'    
-    
-      }}> 
         <div className='editRoutineActivityDiv'>
     {editing
         ?
@@ -86,17 +79,15 @@ const EditRoutineActivity = ({token, fetchMyRoutines, routineActivityId, count, 
         </form>
         :
         <Button style={{
-            marginTop: "2%",
-            width: "100%",
-            borderRadius: 35,
-            background: "#001242",
-            opacity: "70%",
-            color: "#FFFCFF",
-           
-          }} onClick={() => setEditing(true)}>Edit</Button>
+          marginTo:'80%',
+          borderRadius: 35,
+          background: "#001242",
+          opacity: "70%",
+          color: "#FFFCFF",
+        
+      }} onClick={() => setEditing(true)}>Edit</Button>
     }
         </div>
-        </Card>
     )
 }
 
