@@ -32,9 +32,9 @@ const Home = () => {
         <CardActionArea>
           <CardActions>
           <Link style={{ textDecoration: 'none' }} to='/register'>
-             <Button variant="contained" size='small' color='success'>
+             
               Sign Up!
-            </Button>
+           
              </Link>
           </CardActions>
         </CardActionArea>
