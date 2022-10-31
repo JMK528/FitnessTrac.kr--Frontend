@@ -50,7 +50,7 @@ const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines, getMe }
                     RoutinesToDisplay.map((routine) => {
                         const { activities, creatorId, creatorName, goal, id, isPublic, name } = routine;
                         return (
-                            <Card style={{ padding: '.5rem', margin: '.5rem', background: 'B4D2E7', }} elevation={6} key={message._id}>
+                            <Card style={{ padding: '.5rem', margin: '.5rem', background: 'B4D2E7', }} elevation={6} key={id}>
 
                                 <h3>{name}</h3>
                                 <p>Goal: {goal}</p>
@@ -64,39 +64,34 @@ const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines, getMe }
                                     fetchMyRoutines();
                                 }}>Delete</Button>
                                 <h4>Activities</h4>
-                            </Card>
                     {
-                        </div>
-                        <div>
-                            activities.map((activity) => {
-                                const { name, description, duration, count, id } = activity;
-                                return (
-                                    <Card style={{ padding: '.5rem', margin: '.5rem', background: 'B4D2E7', }} elevation={6} key={message._id}>
+                        activities.map((activity) => {
+                            const { name, description, duration, count, id } = activity;
+                            return (
+                                <Card style={{ padding: '.5rem', margin: '.5rem', background: 'B4D2E7', }} elevation={6} key={id}>
                                         <li key={id}>
                                             <Link style={{
                                                 textDecoration: 'none'
                                             }}
-                                                to={`/activities/routines/${id}`}><Button
-                                                style={
-                                                    { height: '4rem', width: '100%', borderRadius: 15, background: '#001242' }
-                                                }><h5>{name}</h5></Button></Link>
+                                            to={`/activities/routines/${id}`}><Button
+                                            style={
+                                                { height: '4rem', width: '100%', borderRadius: 15, background: '#001242' }
+                                            }><h5>{name}</h5></Button></Link>
                                             <p>Description: {description}</p>
                                             <p>Duration: {duration}</p>
                                             <p>Count: {count}</p>
                                         </li>
                                         
                                     </Card>
-                                    </div>
                                 )
                             })
+                            
                         }
-               
-                </Card>
-                
+                </Card>  
             )
         })
-       }
-
+    }
+    </div>
             <Card style={{ padding: '.5rem', margin: '.5rem', background: '#C3B299', }} >
                 <div className='createRoutineDiv'>
                     <CreateRoutine

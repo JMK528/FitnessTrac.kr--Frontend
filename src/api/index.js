@@ -137,12 +137,11 @@ export const activityRoutines = async (activityId) => {
 
 
   
-export const getRoutines = async(token) => {
+export const getRoutines = async() => {
       try {
         const response = await fetch(`${baseURL}/routines`, {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
           },
         })
         const result = await response.json();
