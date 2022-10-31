@@ -32,12 +32,14 @@
     color:#ffffff
   }
   .routinesDiv {
-    background-color:white;
+    background-color:rgb(206, 182, 182);
     color: black;
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
+    align-items: center;
+    justify-items: space-between;
   }
   .myRoutinesDiv {
     display: flex;
@@ -55,4 +57,10 @@
   button {
     color: #ffffff;
     background-color: darkblue;
+  }
+  .routine {
+    width: 50%;
+    background-color: white;
+    padding: 2vw;
+    margin-bottom: 2vh;
   }

@@ -99,7 +99,7 @@ const EditRoutine = ({myRoutines, navigate, fetchMyRoutines, updateRoutine, toke
         const response = await updateRoutine(token, updatedRoutine)
     }
     return (
-        <div className='editRoutineDiv'>
+        <div className='editRoutineDiv' style={ {backgroundColor: 'white'} }>
         <form onSubmit={(event) => {
             event.preventDefault();
             editRoutine();
@@ -127,6 +127,7 @@ const EditRoutine = ({myRoutines, navigate, fetchMyRoutines, updateRoutine, toke
             
             <button type='submit'>Edit Routine</button>
         </form>
+        <ul className='routinesDiv'>
         <h4>Activities</h4>
                     {addActivity
                       ? <AddActivityToRoutine routineId={_id} fetchMyRoutines={fetchMyRoutines} filteredActivities={filteredActivities} setAddActivity={setAddActivity} token={token} />
@@ -138,7 +139,7 @@ const EditRoutine = ({myRoutines, navigate, fetchMyRoutines, updateRoutine, toke
                         activities.map((activity) => {
                             const {name, description, duration, count, id, routineActivityId} = activity;
                             return (
-                                <li key={id}>
+                                <li className='routine' key={id} style={{paddingLeft: '1em'}}>
                                     <h5>{name}</h5>
                                     <p>Description: {description}</p>
                                     <p>Duration: {duration}</p>
@@ -152,6 +153,7 @@ const EditRoutine = ({myRoutines, navigate, fetchMyRoutines, updateRoutine, toke
                             )
                         })
                     }
+        </ul>
         </div>
     )
 }
