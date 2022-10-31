@@ -182,13 +182,7 @@ const EditRoutine = ({ myRoutines, navigate, fetchMyRoutines, updateRoutine, tok
                         onChange={(event) => setNewGoal(event.target.value)}
                     />
                     <span>isPublic
-                        <TextField style={{
-                            flexWrap: 'center',
-                            margin: '.25rem',
-                            width: '100%',
-                            backgroundColor: '#FFFCFF',
-
-                        }}
+                        <input
                             type='checkbox'
                             onChange={(event) => setNewIsPublic(event.target.checked)}
                         />

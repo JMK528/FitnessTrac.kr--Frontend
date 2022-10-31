@@ -50,7 +50,7 @@ const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines, getMe }
                     RoutinesToDisplay.map((routine) => {
                         const { activities, creatorId, creatorName, goal, id, isPublic, name } = routine;
                         return (
-                            <Card style={{ padding: '.5rem', margin: '.5rem', background: 'B4D2E7', }} elevation={6} key={id}>
+                            <Card style={{ padding: '.5rem', margin: '.5rem', background: 'B4D2E7', width:'50%'}} elevation={6} key={id}>
 
                                 <h3>{name}</h3>
                                 <p>Goal: {goal}</p>
