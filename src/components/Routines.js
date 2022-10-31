@@ -3,8 +3,7 @@ import { Button, Card, TextField } from '@mui/material';
 import { Link } from 'react-router-dom'
 
 
-const Routines = ({ routines, token, fetchRoutines }) => {
-    console.log(routines)
+const Routines = ({ routines }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const routineMatches = (routine, text) => {
         if (routine.name.toUpperCase().includes(text.toUpperCase())) return true
