@@ -128,7 +128,6 @@ export const activityRoutines = async (activityId) => {
       },
     })
     const result = await response.json();
-    console.log(result,"ActivityRoutine")
     return result
   } catch (error) {
     console.log('error getting all public routines')
