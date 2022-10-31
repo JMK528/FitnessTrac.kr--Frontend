@@ -237,7 +237,8 @@ const EditRoutine = ({ myRoutines, navigate, fetchMyRoutines, updateRoutine, tok
                                         token={token}
                                         fetchMyRoutines={fetchMyRoutines} />
                                     <Button style={{
-                                        marginTo:'80%',
+                                       margin:'.5rem',
+                                       padding:'1em',
                                         borderRadius: 35,
                                         background: "#001242",
                                         opacity: "70%",

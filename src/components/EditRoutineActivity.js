@@ -79,11 +79,12 @@ const EditRoutineActivity = ({token, fetchMyRoutines, routineActivityId, count, 
         </form>
         :
         <Button style={{
-          marginTo:'80%',
-          borderRadius: 35,
-          background: "#001242",
-          opacity: "70%",
-          color: "#FFFCFF",
+          margin:'.5rem',
+          padding:'1em',
+           borderRadius: 35,
+           background: "#001242",
+           opacity: "70%",
+           color: "#FFFCFF",
         
       }} onClick={() => setEditing(true)}>Edit</Button>
     }
