@@ -49,7 +49,7 @@ const CreateAnActivity = ({ token, fetchActivities, navigate }) => {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <Card elevation={6} style={{ background: '#50514F' }}>
+    <Card elevation={6} style={{ background: '#50514F',margin:'2rem' }}>
       <form onSubmit={(event) => {
         event.preventDefault();      
       }}>
@@ -58,7 +58,7 @@ const CreateAnActivity = ({ token, fetchActivities, navigate }) => {
         <CardMedia>
           <img style={{
             backgroundImage: `url(${navPIC})`, height: '25rem', width: '100%',
-            backgroundPosition: 'center',
+            backgroundPosition: 'top',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
           }} src={navPIC} />

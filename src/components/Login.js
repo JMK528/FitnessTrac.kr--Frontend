@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
 import { loginUser } from '../api';
+import {
+  Popover,
+  Button,
+  Typography,
+  TextField,
+  Card,  
+  CardContent,
+  CardMedia,
+  CardActionArea,
+  CardActions, 
+} from "@mui/material";
 
 import { Link } from 'react-router-dom';
 import './Register';
@@ -18,6 +29,15 @@ const Login = ({ setToken, navigate }) => {
     }
   };
   return (
+    <>
+    <Card className='register-main-card' elevation={6} style={{ 
+      margin:'2rem 4rem ',
+      background: '#50514F',
+      color:'#FFFCFF',
+      textAlign:'center',
+      alignContent:'center'    
+    
+      }}>
     <form className='login'
       onSubmit={(event) => {
         event.preventDefault();
@@ -33,14 +53,14 @@ const Login = ({ setToken, navigate }) => {
         label='Enter Password'
         onChange={(event) => setPassword(event.target.value)}
       />
-      <button style={{ height: '3rem', margin: '.25rem', backgroundColor:'#24a6d1' }} variant='contained' type='submit'>
+      <button style={{ height: '3rem', margin: '.25rem', backgroundColor:'#247BA0',color:'#FFFCFF' }} variant='contained' type='submit'>
         Log In
       </button>
       <Link style={{ textDecoration: 'none' }} to='/register'>
         <button
           style={{
             height: '3rem',
-            margin: '.25rem', backgroundColor:'#FFF700',color:'black'
+            margin: '.25rem', backgroundColor:'#001242',color:'#FFFCFF'
           }}
           variant='contained'
           type='submit'>
@@ -48,6 +68,8 @@ const Login = ({ setToken, navigate }) => {
         </button>
       </Link>
     </form>
+    </Card>
+    </>
   );
 };
 export default Login;

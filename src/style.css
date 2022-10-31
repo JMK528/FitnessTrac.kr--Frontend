@@ -8,8 +8,8 @@
   
   .Navbar {
     display: flex;
-    color: #ffffff;
-    background-color: rgb(27, 105, 141);
+    color: #FFFCFF;
+    background-color: #50514F;
     flex-wrap: wrap; 
     justify-content:space-between;
      
@@ -18,21 +18,21 @@
    form {
     display:flex;
     flex-direction: column;
-    margin: 6rem;
-    padding: 6rem;  
+    margin: 1rem;
+    padding: 1rem;  
     justify-content: center;
   
    }
-   body{
-    background-color: #000000;
-    padding: 2rem;
-    margin: 2rem;
+   body{    
+    padding: 4rem;
+    margin: 6rem;
   }
   #root {    
-    color:#ffffff
+    color:#FFFCFF
   }
+
   .routinesDiv {
-    background-color:white;
+    background-color:#FFFCFF;
     color: black;
     display: flex;
     flex-direction: column;
@@ -51,8 +51,4 @@
     flex-basis: 100%;
     flex: 1;
   }
-    
-  button {
-    color: #ffffff;
-    background-color: darkblue;
-  }
+ 

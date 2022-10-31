@@ -16,14 +16,14 @@ const Activities = ({ activities, token }) => {
     const activitiesToDisplay = searchTerm.length ? filteredActivities : activities;
 
     return (
-        <Card style={{ padding: '.5rem', margin: '.5rem', background: '#24A6D1' }} elevation={6} >
+        <Card style={{ padding: '.5rem', margin: '.5rem', background: '#247BA0' }} elevation={6} >
             <div className="main-activity-div">
                 <div >
                     <form onSubmit={(event) => {
                         event.preventDefault();
                     }}>
-                        <Card style={{ padding: '.5rem', margin: '.5rem', background: 'Slated Grey', }} >
-                            <TextField style={{ width: '100%', background: 'White' }}
+                        <Card style={{ padding: '.5rem', margin: '.5rem', background: '#C3B299', }} >
+                            <TextField style={{ width: '100%', background: '#FFFCFF' }}
                                 type='text'
                                 label='Search'
                                 onChange={(event) => setSearchTerm(event.target.value)}
@@ -51,8 +51,8 @@ const Activities = ({ activities, token }) => {
                             const { name, description, id } = activity;
 
                             return (
-                                <Card style={{ padding: '.5rem', margin: '.5rem', background: 'white', }}>
-                                    <div key={id} >
+                                <Card key={id} style={{ padding: '.5rem', margin: '.5rem', background: '#FFFCFF', }}>
+                                    <div  >
                                         <Link   style={{
                                                             textDecoration: 'none'
                                                         }}
@@ -71,7 +71,7 @@ const Activities = ({ activities, token }) => {
                                                     ><Button
                                                         style={{
                                                             height: '3rem',
-                                                            margin: '.25rem', width: '100%', borderRadius: 15, backgroundColor: ' #000022',
+                                                            margin: '.25rem', width: '100%', borderRadius: 15, backgroundColor: ' #50514F',
                                                         }}
                                                         variant='contained'
                                                         type='submit'>Edit Activity

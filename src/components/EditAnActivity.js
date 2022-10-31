@@ -34,7 +34,13 @@ const EditAnActivity = ({ activities, fetchActivities, navigate, token }) => {
     }
 
     return (
-
+<Card elevation={6} style={{ background: '#50514F', margin:'2rem 4rem ',
+      background: '#50514F',
+      color:'#FFFCFF',
+      textAlign:'center',
+      alignContent:'center'    
+    
+      }}> 
       <div className="edit-main-div" >
         <form onSubmit={(event) => {
           event.preventDefault();
@@ -44,33 +50,46 @@ const EditAnActivity = ({ activities, fetchActivities, navigate, token }) => {
         }}>
           <h1>Edit Activity</h1>
 
-          <input style={{ width: '100%', padding: '.5rem', margin: '.5rem', background: 'whitesmoke' }}
+          <TextField style={{ 
+          flexWrap:'center',
+          margin: '.25rem',         
+           width: '100%', 
+           backgroundColor: '#FFFCFF',
+           
+           }}
             type='text'
             placeholder={name}
             onChange={(event) => setNewName(event.target.value)}
           />
-          <input style={{ width: '100%', padding: '.5rem', margin: '.5rem', background: 'whitesmoke' }}
+          <TextField style={{ 
+          flexWrap:'center',
+          margin: '.25rem',         
+           width: '100%', 
+           backgroundColor: '#FFFCFF',
+           
+           }}
             type='text'
             placeholder={description}
             onChange={(event) => setNewDescription(event.target.value)}
           />
 
-          <button style={{
+          <Button style={{
             marginTop: "2%",
             width: "100%",
             borderRadius: 35,
-            background: "#55586F",
+            background: "#001242",
             opacity: "70%",
-            color: "#24A6D1",
-            borderColor: "#55586F",
+            color: "#FFFCFF",
+            borderColor: "#24A6D1",
           }}
             type="submit"
             variant="outlined"
             onClick={() => {
               editActivity();
-            }}>Edit Activity</button>
+            }}>Edit Activity</Button>
         </form>
       </div>
+      </Card>
     )
   }
   return <h1>Activities Loading</h1>
