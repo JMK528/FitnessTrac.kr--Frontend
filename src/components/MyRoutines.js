@@ -137,15 +137,18 @@ const CreateRoutine = ({ fetchMyRoutines, token, createRoutine }) => {
                 addRoutine()
                 fetchMyRoutines()
             }}>
-                <input className='textInput' type='text' placeholder='name' value={name} onChange={(event) => setName(event.target.value)} />
-                <input className='textInput' type='text' placeholder='goal' value={goal} onChange={(event) => setGoal(event.target.value)} />
+               <TextField style={{ width: '100%', background: '#FFFCFF' }} className='textInput' type='text' placeholder='name' value={name} onChange={(event) => setName(event.target.value)} />
+               <TextField style={{ width: '100%', background: '#FFFCFF' }} className='textInput' type='text' placeholder='goal' value={goal} onChange={(event) => setGoal(event.target.value)} />
                 <span>isPublic
-                    <input
+                <TextField style={{ width: '100%', background: '#FFFCFF' }}
                         type='checkbox'
                         onChange={(event) => setIsPublic(event.target.checked)}
                     />
                 </span>
-                <button type='submit'>Confirm Create Routine</button>
+                <Button
+                                            style={
+                                                { height: '4rem', width: '100%', borderRadius: 15, background: '#001242' }
+                                            } type='submit'>Confirm Create Routine</Button>
 
             </form>
         </Card>
