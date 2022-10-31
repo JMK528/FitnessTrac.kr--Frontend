@@ -24,7 +24,7 @@ const routineMatches = (routine, text) => {
     return(
         <div className='routinesDiv'>
             <form>
-            <Card style={{ padding: '.5rem', margin: '.5rem', background: '#C3B299', }} >
+            <Card style={{ padding: '.5rem', margin: '.5rem', background: '#C3B299'}} >
             <TextField style={{ width: '100%', background: '#FFFCFF' }}
                                 type='text'
                                 label='Search'
@@ -36,7 +36,7 @@ const routineMatches = (routine, text) => {
         RoutinesToDisplay.map((routine) => {
             const {activities, creatorId, creatorName, goal, id, isPublic, name} = routine;
             return (
-                <Card style={{ padding: '.5rem', margin: '.5rem', background: '#247BA0' }} elevation={6} >
+                <Card style={{ padding: '.5rem', margin: '.5rem', background: '#247BA0', width:'50%' }} elevation={6} >
                 <div className='routine' key={id}>
                     <h3>{name}</h3>
                     <p>Goal: {goal}</p>
