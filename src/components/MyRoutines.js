@@ -55,7 +55,10 @@ const myRoutines = ({ myRoutines, token, createRoutine, fetchMyRoutines, getMe }
                                 <h3>{name}</h3>
                                 <p>Goal: {goal}</p>
                                 <p>Creator: {creatorName}</p>
-                                <Link style={{ textDecoration: 'none' }} className='routineButtons' to={`/myroutines/editroutine/${id}`}>Edit</Link>
+                                <Link style={{ textDecoration: 'none' }} className='routineButtons' to={`/myroutines/editroutine/${id}`}><Button
+                                                        style={
+                                                            { height: '4rem', width: '100%', borderRadius: 15, background: '#001242' }
+                                                        }>Edit</Button></Link>
                                 <Button
                             style={
                                 { height: '4rem', width: '100%', borderRadius: 15, background: '#001242' }
