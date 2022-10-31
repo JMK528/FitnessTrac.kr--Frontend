@@ -92,7 +92,7 @@ const EditRoutineActivity = ({token, fetchMyRoutines, routineActivityId, count, 
             background: "#001242",
             opacity: "70%",
             color: "#FFFCFF",
-            borderColor: "#24A6D1",
+           
           }} onClick={() => setEditing(true)}>Edit</Button>
     }
         </div>

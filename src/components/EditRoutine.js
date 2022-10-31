@@ -143,8 +143,8 @@ const EditRoutine = ({ myRoutines, navigate, fetchMyRoutines, updateRoutine, tok
     }
     return (
         <Card elevation={6} style={{
-            background: '#50514F', margin: '2rem 4rem ',
-            background: '#50514F',
+            background: '#247BA0', margin: '2rem 4rem ',
+           
             color: '#FFFCFF',
             textAlign: 'center',
             alignContent: 'center'
@@ -195,13 +195,21 @@ const EditRoutine = ({ myRoutines, navigate, fetchMyRoutines, updateRoutine, tok
                         background: "#001242",
                         opacity: "70%",
                         color: "#FFFCFF",
-                        borderColor: "#24A6D1",
+                        
                     }} type='submit'>Edit Routine</Button>
                 </form>
                 <h4>Activities</h4>
                 {addActivity
                     ? <AddActivityToRoutine routineId={_id} fetchMyRoutines={fetchMyRoutines} filteredActivities={filteredActivities} setAddActivity={setAddActivity} token={token} />
-                    : <button onClick={() => setAddActivity(true)}>add an activity</button>
+                    :  <Button style={{
+                        marginTop: "2%",
+                        width: "100%",
+                        borderRadius: 35,
+                        background: "#001242",
+                        opacity: "70%",
+                        color: "#FFFCFF",
+                        borderColor: "#24A6D1",
+                      }} onClick={() => setAddActivity(true)}>add an activity</Button>
 
                 }
 
@@ -210,8 +218,8 @@ const EditRoutine = ({ myRoutines, navigate, fetchMyRoutines, updateRoutine, tok
                         const { name, description, duration, count, id, routineActivityId } = activity;
                         return (
                             <Card elevation={6} style={{
-                                background: '#50514F', margin: '2rem 4rem ',
-                                background: '#50514F',
+                                background: '#C3B299', margin: '2rem 4rem ',
+                               
                                 color: '#FFFCFF',
                                 textAlign: 'center',
                                 alignContent: 'center'
@@ -229,13 +237,12 @@ const EditRoutine = ({ myRoutines, navigate, fetchMyRoutines, updateRoutine, tok
                                         token={token}
                                         fetchMyRoutines={fetchMyRoutines} />
                                     <Button style={{
-                                        marginTop: "2%",
-                                        width: "100%",
+                                        marginTo:'80%',
                                         borderRadius: 35,
                                         background: "#001242",
                                         opacity: "70%",
                                         color: "#FFFCFF",
-                                        borderColor: "#24A6D1",
+                                      
                                     }} className='Buttons' onClick={() => {
                                         deleteActivity(token, routineActivityId)
                                         fetchMyRoutines();
