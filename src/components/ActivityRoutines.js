@@ -23,13 +23,19 @@ const routineMatches = (routine, text) => {
     return(
         <div className='routinesDiv'>
             <form>
-                <label>Search</label>
-                <input className='textInput' type='text' onChange={(event) => setSearchTerm(event.target.value)}/>
+            <Card style={{ padding: '.5rem', margin: '.5rem', background: '#C3B299', }} >
+            <TextField style={{ width: '100%', background: '#FFFCFF' }}
+                                type='text'
+                                label='Search'
+                                onChange={(event) => setSearchTerm(event.target.value)}
+                            ></TextField>
+                            </Card>
             </form>
        {
         RoutinesToDisplay.map((routine) => {
             const {activities, creatorId, creatorName, goal, id, isPublic, name} = routine;
             return (
+                <Card style={{ padding: '.5rem', margin: '.5rem', background: '#247BA0' }} elevation={6} >
                 <div className='routine' key={id}>
                     <h3>{name}</h3>
                     <p>Goal: {goal}</p>
@@ -40,24 +46,32 @@ const routineMatches = (routine, text) => {
                         activities.map((activity) => {
                             const {name, description, duration, count, id} = activity;
                             return (
+                                <Card style={{ padding: '.5rem', margin: '.5rem', background: '#247BA0' }} elevation={6} >
                                 <li key={id}>
                                     <Link   style={{
                                                             textDecoration: 'none'
                                                         }}
-                                                        to={`/activities/routines/${id}`}><h5>{name}</h5></Link>
+                                                        to={`/activities/routines/${id}`}><Button
+                                                        style={
+                                                            { height: '4rem', width: '100%', borderRadius: 15, background: '#001242' }
+                                                        }><h5>{name}</h5></Button></Link>
                                     <p>Description: {description}</p>
                                     <p>Duration: {duration}</p>
                                     <p>Count: {count}</p>
                                 </li>
+                                </Card>
                             )
                         })
                     }
                     </ul>
                 </div>
+                </Card>
+
             )
         })
        }
        </div>
+       
     )
 }
 

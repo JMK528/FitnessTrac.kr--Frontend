@@ -89,10 +89,6 @@ const App = () => {
     fetchRoutines()
   }, [token])
 
-  //   useEffect(() => {
-  //     fetchPosts()
-  //   }, [token])
-
   useEffect(() => {
     getMe();
   }, [token])
@@ -104,7 +100,12 @@ const App = () => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Paper  elevation={16} style={{background:'#000000' }}>
+      <Paper  elevation={16} 
+      style={{
+        background:'#CBD4C2',
+        width:'100%',
+        height: '100%'
+         }}>
       <header>
         <nav>
           <Navbar

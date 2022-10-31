@@ -140,7 +140,7 @@ export const getRoutines = async() => {
       try {
         const response = await fetch(`${baseURL}/routines`, {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
         })
         const result = await response.json();

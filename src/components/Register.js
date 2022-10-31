@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import { registerUser } from '../api';
-
+import {
+  Popover,
+  Button,
+  Typography,
+  TextField,
+  Card,  
+  CardContent,
+  CardMedia,
+  CardActionArea,
+  CardActions,  
+} from "@mui/material";
 const Register = ({ setToken, navigate }) => {
 
   const [username, setUsername] = useState('');
@@ -29,29 +39,53 @@ const Register = ({ setToken, navigate }) => {
   }
   return (
     <>
-      <h1>Register</h1>
+    <Card className='register-main-card' elevation={6} style={{ 
+      margin:'2rem 4rem ',
+      background: '#50514F',
+      color:'#FFFCFF',
+      textAlign:'center',
+      alignContent:'center'    
+    
+      }}>
+        
+      <h1>REGISTER</h1>
       <form onSubmit={(event) => {
         event.preventDefault();
         handleSubmit();
       }}>
-        <input style={{ margin: '.25rem', width: '100%', backgroundColor: 'whitesmoke' }}
+        
+        <TextField style={{ 
+          flexWrap:'center',
+          margin: '.25rem',         
+           width: '100%', 
+           backgroundColor: '#FFFCFF',
+           
+           }}
         type='text'
         label='Enter Username'
         required={{minLength: 3,maxLength:13}}
         onChange={(event) => setUsername(event.target.value)}
       />
-        <input style={{ margin: '.25rem', width: '100%', backgroundColor: 'whitesmoke' }}
+        <TextField style={{ margin: '.25rem', width: '100%', backgroundColor: '#FFFCFF' }}
           type='password'
          required={{minLength: 8, maxLength:20}}        
           label='Enter Password*'
           onChange={(event) => setPassword(event.target.value)} />
-        <input style={{ margin: '.25rem', width: '100%', backgroundColor: 'whitesmoke' }}
+        <TextField style={{ margin: '.25rem', width: '100%', backgroundColor: '#FFFCFF' }}
           type='password'
           required={{minLength: 8, maxLength:20}}
           label='Confirm Password*'
           onChange={(event) => setConfirmPassword(event.target.value)} />
-        <button style={{ height: '3rem', margin: '.25rem', backgroundColor:'#24a6d1' }} variant='contained' type='submit'>Submit</button>
+        <Button 
+        style={{ 
+          height: '3rem',
+           margin: '.25rem',
+            backgroundColor:'#247BA0' }} 
+            variant='contained' 
+            type='submit'>Register</Button>
       </form>
+      
+      </Card>
     </>
   )
 }
