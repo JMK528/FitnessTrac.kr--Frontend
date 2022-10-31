@@ -140,7 +140,7 @@ const CreateRoutine = ({ fetchMyRoutines, token, createRoutine }) => {
                <TextField style={{ width: '100%', background: '#FFFCFF' }} className='textInput' type='text' placeholder='name' value={name} onChange={(event) => setName(event.target.value)} />
                <TextField style={{ width: '100%', background: '#FFFCFF' }} className='textInput' type='text' placeholder='goal' value={goal} onChange={(event) => setGoal(event.target.value)} />
                 <span>isPublic
-                <TextField style={{ width: '100%', background: '#FFFCFF' }}
+                    <input
                         type='checkbox'
                         onChange={(event) => setIsPublic(event.target.checked)}
                     />
