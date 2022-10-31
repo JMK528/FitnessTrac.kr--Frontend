@@ -147,7 +147,7 @@ const CreateRoutine = ({ fetchMyRoutines, token, createRoutine }) => {
                 </span>
                 <Button
                                             style={
-                                                { height: '4rem', width: '100%', borderRadius: 15, background: '#001242' }
+                                                { height: '4rem', width: '100%', borderRadius: 15, background: '#001242' ,color:'#FFFCFF'}
                                             } type='submit'>Confirm Create Routine</Button>
 
             </form>
